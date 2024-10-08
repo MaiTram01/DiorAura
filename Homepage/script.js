@@ -100,3 +100,44 @@ function hideNotification() {
     var notificationBox = document.getElementById("notificationBox");
     notificationBox.style.display = "none";
 }
+   // Lấy các phần tử HTML
+   const chatBubble = document.getElementById('chatBubble');
+   const container_chat = document.getElementById('container_chat');
+   const closeChat = document.getElementById('closeChat');
+   const sendMessageBtn = document.getElementById('sendMessage');
+   const messageInput = document.getElementById('messageInput');
+   const messagesContainer = document.getElementById('messages');
+
+   // Mở khung chat khi nhấn vào bong bóng chat
+   chatBubble.addEventListener('click', () => {
+       container_chat.style.display = 'flex';
+       chatBubble.style.display = 'none';
+        // Ẩn bong bóng chat khi mở khung chat
+   });
+
+   // Đóng khung chat khi nhấn nút X
+   closeChat.addEventListener('click', () => {
+       container_chat.style.display = 'none';
+       chatBubble.style.display = 'flex';
+        // Hiển thị lại bong bóng chat
+   });
+
+   // Gửi tin nhắn khi nhấn nút Send
+   sendMessageBtn.addEventListener('click', () => {
+       const messageText = messageInput.value;
+       if (messageText.trim() !== '') {
+           // Tạo thẻ div chứa tin nhắn
+           const messageElement = document.createElement('div');
+           messageElement.classList.add('message');
+           messageElement.textContent = messageText;
+
+           // Thêm tin nhắn vào container tin nhắn
+           messagesContainer.appendChild(messageElement);
+
+           // Xóa nội dung trong ô nhập sau khi gửi
+           messageInput.value = '';
+
+           // Cuộn xuống cuối container để xem tin nhắn mới
+           messagesContainer.scrollTop = messagesContainer.scrollHeight;
+       }
+   });
