@@ -429,3 +429,176 @@ function hideNotification() {
     var notificationBox = document.getElementById("notificationBox");
     notificationBox.style.display = "none";
 }
+
+
+// PHẦN GIỎ HÀNG
+
+// Hàm đóng giỏ hàng và overlay
+function closeCart() {
+    const cartContainer = document.getElementById('cartContainer');
+    cartContainer.style.display = 'none';
+    overlay.style.display = 'none';
+}
+
+// Hàm mở giỏ hàng
+function openCart() {
+    const cartContainer = document.getElementById('cartContainer');
+    cartContainer.style.display = 'block';
+}
+
+// Data giỏ hàng mẫu
+let cart = [
+    { id: 1, name: 'Miss Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false },
+    { id: 2, name: 'Sauvage Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false },
+    { id: 3, name: 'Limit Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false }
+];
+
+// Hàm cập nhật giỏ hàng trong giao diện
+function renderCart() {
+    const cartContainer = document.getElementById('cart-products');
+    cartContainer.innerHTML = '';
+
+    cart.forEach(item => {
+        const productHTML = `
+        <div class="cart-product" data-id="${item.id}">
+            <input type="checkbox" class="select-product" data-id="${item.id}" ${item.selected ? 'checked' : ''}>
+            <img src="${item.img}" alt="${item.name}">
+            <div class="cart-product-info">
+                <div class="cart-product-info-left">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                </div>
+                <div class="cart-price-actions">
+                    <div class="price-basket">$${item.price.toFixed(2)}</div>
+                    <div class="cart-actions">
+                        <button class="quantity-decrease">-</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="quantity-increase">+</button>
+                        <span class="edit-btn">&#9998;</span>
+                        <span class="delete-btn">&#128465;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+        cartContainer.insertAdjacentHTML('beforeend', productHTML);
+    });
+
+    updateTotal();
+}
+
+// Hàm cập nhật tổng số lượng và giá tiền
+function updateTotal() {
+    const totalItems = document.getElementById('total-items');
+    const totalProducts = document.getElementById('total-products');
+    const totalPrice = document.getElementById('total-price');
+
+    let totalQuantity = 0;
+    let totalCost = 0;
+
+    cart.forEach(item => {
+        if (item.selected) {
+            totalQuantity += item.quantity;
+            totalCost += item.price * item.quantity;
+        }
+    });
+
+    totalItems.textContent = totalQuantity;
+    totalProducts.textContent = totalQuantity;
+    totalPrice.textContent = `$${totalCost.toFixed(2)}`;
+}
+
+// Hàm xoá sản phẩm khỏi giỏ hàng
+function deleteProduct(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    renderCart();
+}
+
+// Hàm thay đổi số lượng sản phẩm
+function changeQuantity(productId, delta) {
+    const product = cart.find(item => item.id === productId);
+    if (product) {
+        product.quantity += delta;
+        if (product.quantity < 1) product.quantity = 1; // Không để số lượng nhỏ hơn 1
+        renderCart();
+    }
+}
+
+// Thêm sự kiện click cho các nút trong giỏ hàng
+document.addEventListener('click', function (e) {
+    const target = e.target;
+    const cartProductElement = target.closest('.cart-product');
+
+    if (cartProductElement) {
+        const productId = parseInt(cartProductElement.dataset.id);
+
+        if (target.classList.contains('delete-btn')) {
+            deleteProduct(productId);
+        }
+
+        if (target.classList.contains('quantity-decrease')) {
+            changeQuantity(productId, -1);
+        }
+
+        if (target.classList.contains('quantity-increase')) {
+            changeQuantity(productId, 1);
+        }
+
+        if (target.classList.contains('select-product')) {
+            const product = cart.find(item => item.id === productId);
+            if (product) {
+                product.selected = target.checked;
+                updateTotal();
+            }
+        }
+    }
+});
+
+// Chức năng "Select All"
+document.getElementById('select-all').addEventListener('change', function (e) {
+    const isChecked = e.target.checked;
+    cart.forEach(item => {
+        item.selected = isChecked;
+    });
+    renderCart();
+});
+
+// Render giỏ hàng lần đầu
+renderCart();
+
+// Hàm render sản phẩm (nếu cần)
+function renderProducts(cardList, elementId) {
+    let div = cardList.map(p =>
+        `<div class='course-item'>
+    <img src='${p.image}' alt='${p.name}'/>
+    <h3>${p.name}</h3>
+    <p>${p.content}</p>
+    <h5 class="price-basket">From: <span class="price-value">${p.price}</span></h5>
+    <a href="#" class="more-info">></a>
+</div>`
+    ).join("");
+    document.getElementById(elementId).innerHTML = div;
+}
+
+// Hàm tìm kiếm (nếu cần)
+function search() {
+    const query = document.getElementById('header-input').value;
+    console.log('Searching for:', query);
+    // Thêm logic tìm kiếm tại đây
+}
+// Lấy các phần tử từ DOM
+const cartIcon = document.querySelector('.fa-cart-shopping'); // Biểu tượng giỏ hàng
+const cartContainer = document.querySelector('.cart-container'); // Giỏ hàng
+const overlay = document.querySelector('.overlay'); // Lớp overlay
+
+// Khi nhấn vào biểu tượng giỏ hàng
+cartIcon.addEventListener('click', function () {
+    cartContainer.style.display = 'block'; // Hiển thị giỏ hàng
+    overlay.style.display = 'block'; // Hiển thị lớp phủ
+});
+
+// Khi nhấn vào overlay thì ẩn cả overlay và giỏ hàng
+overlay.addEventListener('click', function () {
+    cartContainer.style.display = 'none'; // Ẩn giỏ hàng
+    overlay.style.display = 'none'; // Ẩn lớp phủ
+});
