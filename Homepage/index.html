@@ -12,647 +12,515 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- html cho phần header chỉnh -->
-    <header class="header">
-        <nav class="header-left">
-            <li><a href=""><i class="fa-solid fa-phone"></i> Customer Service</a></li>
-            <li><a href=""><i class="fa-solid fa-location-dot"></i> The Boutiques</a></li>
-        </nav>
+<!-- THANH HEADER PHÍA TRÊN ĐIỀU HƯỚNG -->
+<header class="header">
+    <nav class="header-left">
+        <li><a href="javascript:void(0)"><i class="fa-solid fa-phone"></i> Customer Service</a></li>
+        <li><a href="javascript:void(0)"><i class="fa-solid fa-location-dot"></i> The Boutiques</a></li>
+    </nav>
 
-        <nav class="header-right">
-            <div class="input-container">
+    <nav class="header-right">
+        <div class="input-container">
+            <input type="text" id="header-input" placeholder="Search on dior.com">
+            <button class="button-search" onclick="search()">
+                <i style="color:rgb(176, 168, 168);" class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
 
-                <input type="text" id="header-input" placeholder="Search on dior.com">
-                <button class="button-search" onclick="search()">
-                    <i style="color:rgb(176, 168, 168);"  class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-            
-            <li>
-                <a href="javascript:void(0)">
-                    <i class="fa-solid fa-bell" onclick="toggleNotification()"></i>
-                </a>
+        <li>
+            <a href="javascript:void(0)">
+                <i class="fa-solid fa-bell" onclick="toggleNotification()"></i>
+            </a>
             <!-- html cho thành thông báo -->
-                <div class="notification-box" id="notificationBox">
-                    <span class="closebtn" onclick="hideNotification()">&times;</span>
-                    <p id="ok">No new notifications.</p> 
-                    <!-- Phần tử để hiển thị thông báo -->
-                </div>
-            </li>
-            <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-            <li><a href=""><i class="fa-solid fa-user-large"></i> Log in</a></li>
-            <li><span style="color: white;">/</span></li>
-            <li><a href="">Sign in</a></li>
-        </nav>
-    </header>
+            <div class="notification-box" id="notificationBox">
+                <span class="closebtn" onclick="hideNotification()">&times;</span>
+                <p id="ok">No new notifications.</p>
+                <!-- Phần tử để hiển thị thông báo -->
+            </div>
+        </li>
+        <li>
+            <a href="javascript:void(0)" onclick="openCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </li>
+        <li><a href="javascript:void(0)"><i class="fa-solid fa-user-large"></i> Log in</a></li>
+        <li><span style="color: white;">/</span></li>
+        <li><a href="javascript:void(0)">Sign in</a></li>
+    </nav>
+</header>
 
-<!-- html cho phần header dưới -->
-    <header class="head" id="head">
-        <h1><a href="http://127.0.0.1:5500/teamProject/index.html" style="text-decoration: none;color: black;">DIOR</a></h1>
-        <nav>
-            <ul>
-                <li><a href="">FRAGRANCES</a></li>
-                <li><a href="">MAKEUP</a></li>
-                <li><a href="">SKINCARE</a></li>
-                <li><a href="">GIFTS</a></li>
-                <li><a href="">SERVICES</a></li>
-                <li><a href="">FASHION & ACCESSORIES</a></li>
+<!-- THANH HEADER PHÍA DƯỚI -->
+<header class="head" id="head">
+    <h1><a href="http://127.0.0.1:5500/teamProject/index.html" style="text-decoration: none;color: black;">DIOR</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="">FRAGRANCES</a></li>
+            <li><a href="">MAKEUP</a></li>
+            <li><a href="">SKINCARE</a></li>
+            <li><a href="">GIFTS</a></li>
+            <li><a href="">SERVICES</a></li>
+            <li><a href="">FASHION & ACCESSORIES</a></li>
+        </ul>
+    </nav>
+    <div class="underline"></div>
+</header>
+<!-- HIỆN CHỮ DƯỚI THANH HEADER -->
+<div class="cover">
+    <h1 class="cover-content">DISCOVER MISS DIOR</h1>
+</div>
+<!-- SLIDE SHOW CHỨA HÌNH ẢNH LỚN  -->
+<div class="slideshow">
+    <div class="slide-wrapper">
+        <div class="slide">
+            <img src="https://images.prismic.io/lvmh-com/4d92bc9c-ec27-42dd-b783-e06c245f88af_DIOR+PARFUMS+-+COVER.jpg?auto=compress,format"
+                alt="This is an example of" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.dior.com/on/demandware.static/-/Library-Sites-DiorSharedLibrary/default/dw6dc0f1b8/images/beauty/01-FRAGRANCES/2024/MISS-DIOR_2024/RANGEPAGE/MD_Parfum_Instit_NP_EN_E-merch_3000x2250.jpg"
+                alt="GeeksforGeeks" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.theperfumegirl.com/perfumes/fragrances/dior/miss-dior-blooming-bouquet/images/miss-dior-blooming-bouquet-ad-lg.jpg"
+                alt="A computer science portal" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://m.media-amazon.com/images/M/MV5BNTIyNGZlYjktMTY3NC00MDMxLWIwMmMtYmRjMzIwMWY1MWU3XkEyXkFqcGc@._V1_.jpg"
+                alt="Slideshow with HTML and CSS only" class="slide-image">
+        </div>
+    </div>
+</div>
+<!-- TỪ DISCOVER -->
+<div class="button-container_discover">
+    <div class="button-discover" style="margin-bottom: 60px;">
+        <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q30 0 100 10 Q160 20 190 10 Q190 40 180 50 Q160 70 90 60 Q40 50 20 60 Q0 70 20 20"
+                fill="black" />
+        </svg>
+        <div class="button-text_discover">Discover</div>
+    </div>
+</div>
+
+<!-- PHẦN ICON CHATBOX -->
+<div class="chat-bubble" id="chatBubble">
+    <ion-icon name="chatbox-ellipses"></ion-icon>
+</div>
+<!-- PHẦN CHATBOX DATA -->
+<div class="container_chat" id="container_chat">
+    <div class="leftside">
+        <!-- header -->
+        <div class="header_chat">
+            <div class="userimg">
+                <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
+                    class="cover_chat">
+            </div>
+            <ul class="nav_icons">
+                <li><ion-icon name="scan-circle-outline"></ion-icon></li>
+                <li><ion-icon name="chatbox"></ion-icon></li>
+                <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
             </ul>
-        </nav>
-        <div class="underline"></div>
-    </header>
-    <div class="cover">
-        <h1 class="cover-content">DISCOVER MISS DIOR</h1>
-    </div>
-
-    <div class="chat-bubble" id="chatBubble">
-        <ion-icon name="chatbox-ellipses"></ion-icon>
-    </div>
-
-    <div class="container_chat" id="container_chat">
-        <div class="leftside">
-            <!-- header -->
-            <div class="header_chat">
-                <div class="userimg">
+        </div>
+        <!-- search -->
+        <div class="search_chat">
+            <div>
+                <input type="text" placeholder="Search or start new chat" id="search-input">
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="chatlist" id="chatList">
+            <!-- Example Chat Blocks -->
+            <div class="block active" data-chat-id="chat1">
+                <div class="imgbx">
                     <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
-                        class="cover_chat">
+                        alt="Mai Tram" class="cover_chat">
                 </div>
-                <ul class="nav_icons">
-                    <li><ion-icon name="scan-circle-outline"></ion-icon></li>
-                    <li><ion-icon name="chatbox"></ion-icon></li>
-                    <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
-                </ul>
-            </div>
-            <!-- search -->
-            <div class="search_chat">
-                <div>
-                    <input type="text" placeholder="Search or start new chat">
-                    <ion-icon name="search-outline"></ion-icon>
+                <div class="details">
+                    <div class="listHead">
+                        <h4>Mai Tram</h4>
+                        <p class="time">10:35</p>
+                    </div>
+                    <div class="message_p">
+                        <p>How much perfume you sell?</p>
+                    </div>
                 </div>
             </div>
-            <!-- chat  list-->
-             <div class="chatlist">
-                <div class="block active">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Mai Tram</h4>
-                            <p class="time">10:35</p>
-                        </div>
-                        <div class="message_p">
-                            <p>How much perfume you sell?</p>
-                        </div>
-                    </div>
+            <div class="block unread" data-chat-id="chat2">
+                <div class="imgbx">
+                    <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
+                        alt="Cong Doan" class="cover_chat">
                 </div>
-                <div class="block unread">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
+                <div class="details">
+                    <div class="listHead">
+                        <h4>Cong Doan</h4>
+                        <p class="time" style=" color: #06d755;">11:59</p>
                     </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Cong Doan</h4>
-                            <p class="time">11:59</p>
-                        </div>
-                        <div class="message_p">
-                            <h5>Hello, excuse me!!!</h5>
-                            <b>1</b>
-                        </div>
+                    <div class="message_p">
+                        <p style="font-weight: bold; color: #000;">Hello, excuse me!!!</p>
+                        <b>2</b>
                     </div>
-                </div>
-                <div class="block unread">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Mai Mai</h4>
-                            <p class="time">00:00</p>
-                        </div>
-                        <div class="message_p">
-                            <h5>Surprised</h5>
-                            <b>2</b>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Bich Da</h4>
-                            <p class="time">10/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Hi, Do you want to buy it?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Ha Giang</h4>
-                            <p class="time">10/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Can I buy.....</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>On On</h4>
-                            <p class="time">09/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Hope you a good night.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Binh Do</h4>
-                            <p class="time">09/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Hello, how are you today?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Vi Dieu</h4>
-                            <p class="time">09/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>I want to buy clothes</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Duc Thien</h4>
-                            <p class="time">08/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>How can I help you?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Cong Doan</h4>
-                            <p class="time">07/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>You can interview about the sauvage product?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Dang Vai</h4>
-                            <p class="time">05/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Hi, have you a nice day.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>To Nga</h4>
-                            <p class="time">04/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Can I help you?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Bang Bang</h4>
-                            <p class="time">04/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Really funny when I support you</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Shop perfume</h4>
-                            <p class="time">02/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Please wait check it...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Mai Ngoc</h4>
-                            <p class="time">01/10/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Happy birthday you</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="block">
-                    <div class="imgbx">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg" alt="" class="cover_chat">
-                    </div>
-                    <div class="details">
-                        <div class="listHead">
-                            <h4>Phu Dong</h4>
-                            <p class="time">02/09/2024</p>
-                        </div>
-                        <div class="message_p">
-                            <p>Thank you for the help</p>
-                        </div>
-                    </div>
-                </div>
-
-             </div>
-        </div>
-        <div class="rightside">
-            <div class="header_chat">
-                <div class="imgText">
-                    <div class="userimg">
-                        <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
-                        class="cover_chat">
-                    </div>
-                    <h4>Huynh Thi My Hoa <br><span>online</span></h4>
-                </div>
-                <ul class="nav_icons">
-                    <li><ion-icon name="search-outline"></ion-icon></li>
-                    <li class="close-btn" id="closeChat"><ion-icon name="close-outline"></ion-icon></li>
-                </ul>
-            </div>
-            <!-- chatbox -->
-             <div class="chatBox">
-                <div class="message my_message">
-                    <p>Hi<br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p>Hello<br><span>12:15</span></p>
-                </div>
-                <div class="message my_message">
-                    <p>What can I help you?<br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p> I'm looking for a formal dress.<br><span>12:15</span></p>
-                </div>
-                <div class="message my_message">
-                    <p>We have elegant formal dress upstairs. Let me help you. <br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p>Can I try this one on?<br><span>12:15</span></p>
-                </div>
-                <div class="message my_message">
-                    <p>Of course. The fitting room is on the right corner.<br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p>I think I need a bigger size.<br><span>12:15</span></p>
-                </div>
-                <div class="message my_message">
-                    <p>Yes, please wait a minute. Here you are. This is a bigger size.<br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p>Thank you. How much is it? <br><span>12:15</span></p>
-                </div>
-                <div class="message my_message">
-                    <p>It's a 120$<br><span>12:15</span></p>
-                </div>
-                <div class="message frnd_message">
-                    <p>I will take this one. I pay by cash. <br><span>12:15</span></p>
-                </div>
-
-             </div>
-             <div class="chatbox_input">
-                <ion-icon name="happy-outline"></ion-icon>
-                <ion-icon name="attach-outline"></ion-icon>
-                <input type="text" placeholder="Type a message"> 
-                <ion-icon name="send-outline" style="position: absolute;right: 70px;font-size: 1.5em"></ion-icon>
-                <ion-icon name="mic"></ion-icon>
-             </div>
-        </div>
-        <!-- chat input -->
-    </div>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-        <!-- html cho phần slideshow  -->
-        <div class="slideshow">
-            <div class="slide-wrapper">
-                <div class="slide">
-                    <img src="https://images.prismic.io/lvmh-com/4d92bc9c-ec27-42dd-b783-e06c245f88af_DIOR+PARFUMS+-+COVER.jpg?auto=compress,format" alt="This is an example of" class="slide-image">
-                </div>
-                <div class="slide">
-                    <img src="https://www.dior.com/on/demandware.static/-/Library-Sites-DiorSharedLibrary/default/dw6dc0f1b8/images/beauty/01-FRAGRANCES/2024/MISS-DIOR_2024/RANGEPAGE/MD_Parfum_Instit_NP_EN_E-merch_3000x2250.jpg" alt="GeeksforGeeks" class="slide-image">
-                </div>
-                <div class="slide">
-                    <img src="https://www.theperfumegirl.com/perfumes/fragrances/dior/miss-dior-blooming-bouquet/images/miss-dior-blooming-bouquet-ad-lg.jpg" alt="A computer science portal" class="slide-image">
-                </div>
-                <div class="slide">
-                    <img src="https://m.media-amazon.com/images/M/MV5BNTIyNGZlYjktMTY3NC00MDMxLWIwMmMtYmRjMzIwMWY1MWU3XkEyXkFqcGc@._V1_.jpg" alt="Slideshow with HTML and CSS only" class="slide-image">
                 </div>
             </div>
-        </div>
-
-        <div class="Discover">
-            <h1>Discover</h1>
-        </div>
-    
-    
-    <!-- html cho phần lọc -->
-    <div class="bo-loch">
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-air-freshener"></i>
-                <h3>Perfume</h3>
+            <div class="block unread" data-chat-id="chat3">
+                <div class="imgbx">
+                    <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
+                        alt="Mai Mai" class="cover_chat">
+                </div>
+                <div class="details">
+                    <div class="listHead">
+                        <h4>Mai Mai</h4>
+                        <p class="time" style=" color: #06d755;">00:00</p>
+                    </div>
+                    <div class="message_p">
+                        <p style="font-weight: bold; color: #000;">Surprised</p>
+                        <b>3</b>
+                    </div>
+                </div>
             </div>
-        </a>
-
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-pump-soap"></i>
-                <h3>Makeup</h3>
+            <div class="block" data-chat-id="chat4">
+                <div class="imgbx">
+                    <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
+                        alt="" class="cover_chat">
+                </div>
+                <div class="details">
+                    <div class="listHead">
+                        <h4>Cute</h4>
+                        <p class="time">10/10/2024</p>
+                    </div>
+                    <div class="message_p">
+                        <p>Can I buy.....</p>
+                    </div>
+                </div>
             </div>
-        </a>
-
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-smile"></i>
-                <h3>Skincare</h3>
+            <div class="block" data-chat-id="chat5">
+                <div class="imgbx">
+                    <img src="https://inkythuatso.com/uploads/thumbnails/800/2023/03/1-hinh-anh-ngay-moi-hanh-phuc-sieu-cute-inkythuatso-09-13-35-50.jpg"
+                        alt="" class="cover_chat">
+                </div>
+                <div class="details">
+                    <div class="listHead">
+                        <h4>Love</h4>
+                        <p class="time">8/10/2024</p>
+                    </div>
+                    <div class="message_p">
+                        <p>Hello.....</p>
+                    </div>
+                </div>
             </div>
-        </a>
-
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-tshirt"></i>
-                <h3>Clothing</h3>
-            </div>
-        </a>
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-briefcase"></i>
-                <h3>Accessories</h3>
-            </div>
-        </a>
-        <a href="">
-            <div class="bo-loch_item">
-                <i class="fas fa-shoe-prints"></i>
-                <h3>Footwear</h3>
-            </div>
-        </a>
-    </div>
-
-
-    <!-- html cho các sản phẩm -->
-    <div class="product-Discover" id="product-Discover">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-
-    <div class="Discover">
-        <h1>MEN'S FRAGRANCES</h1>
-    </div>
-
-    <div class="Discover">
-        <h1>Discover</h1>
-    </div>
-    
-    <div class="product-Discover" id="product-DiscoverOne">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-    <div >
-
-    <div class="Discover">
-        <h1>MAKEUP</h1>
-    </div>
-    
-
-    <div class="slideshow">
-        <div class="slide-wrapper">
-            <div class="slide">
-                <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/Video_Cover_1440x800-min.png?v=1657612760" alt="GeeksforGeeks" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/FALL_LOOK_750x610-1-min.jpg?v=1657758424" alt="A computer science portal" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/FALL_LOOK_1850x1850-4.jpg?v=1657758495" alt="This is an example of" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://www.beautyscene.net/wp-content/uploads/2016/09/Natalie-Portman-Rouge-Dior-FW16-00.jpg" alt="Slideshow with HTML and CSS only" class="slide-image">
-            </div>
+            <!-- Thêm các block chat khác nếu cần, mỗi block có một data-chat-id duy nhất -->
         </div>
     </div>
-
-    <div class="Discover">
-        <h1>Discover</h1>
-    </div>
-
-
-    <div class="product-Discover" id="product-DiscoverTwo">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-
-    <div class="Discover">
-        <h1>SKINCARE</h1>
-    </div>
-
-    <div class="slideshow">
-        <div class="slide-wrapper">
-            <div class="slide">
-                <img src="https://nutrimetics.com/wp-content/uploads/2024/05/new-skincare-customers.jpg" alt="GeeksforGeeks" class="slide-image">
+    <div class="rightside">
+        <!-- Header -->
+        <div class="header_chat">
+            <div class="imgText">
+                <div class="userimg">
+                    <img src="" id="chatHeaderImage" class="cover_chat" alt="Friend Image">
+                </div>
+                <h4 id="chatHeaderName">Select a chat</h4>
             </div>
-            <div class="slide">
-                <img src="https://static.independent.co.uk/2021/09/02/14/17152937-34f93bbc-c504-4849-b8cb-0548da3384cf.jpg?quality=75&width=1200&auto=webp" alt="A computer science portal" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://www.skinbox.ie/wp-content/uploads/2021/02/shutterstock_763618693-scaled-e1612973761234.jpg" alt="This is an example of" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://www.oskiaskincare.com/cdn/shop/articles/A-guide-to-layering-your-skincare.jpg?v=1697643024&width=1100" alt="Slideshow with HTML and CSS only" class="slide-image">
-            </div>
+            <ul class="nav_icons">
+                <li><ion-icon name="search-outline"></ion-icon></li>
+                <li class="close-btn" id="closeChat"><ion-icon name="close-outline"></ion-icon></li>
+            </ul>
+        </div>
+        <!-- Chat Messages -->
+        <div class="chatBox" id="chatBox">
+            <!-- Tin nhắn sẽ được thêm vào đây -->
+        </div>
+        <!-- Chat Input -->
+        <div class="chatbox_input">
+            <ion-icon name="happy-outline"></ion-icon>
+            <ion-icon name="attach-outline" id="attachIcon"></ion-icon>
+            <input type="text" id="messageInput" placeholder="Type a message">
+            <ion-icon name="send-outline" id="sendMessage"></ion-icon>
+            <ion-icon name="mic"></ion-icon>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
     </div>
-    
-    <div class="Discover">
-        <h1>Discover</h1>
-    </div>
+</div>
+<!-- ICON CHATBOX -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<!-- Để đảm bảo các biểu tượng hoạt động đúng cách trên tất cả các trình duyệt. -->
 
-    <div class="product-Discover" id="product-DiscoverThree">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
+<!-- PHẦN BỘ LỌC CHỌN SẢN PHẨM -->
+<div class="bo-loch">
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-air-freshener"></i>
+            <h3>Perfume</h3>
+        </div>
+    </a>
 
-    <div class="Discover">
-        <h1>TRY IT FIRST EXCLUSIVELY ON DIOR.COM.AU</h1>
-    </div>
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-pump-soap"></i>
+            <h3>Makeup</h3>
+        </div>
+    </a>
 
-    <div class="slideshow">
-        <div class="slide-wrapper">
-            <div class="slide">
-                <img src="https://shop-beauty.dior.sa/cdn/shop/files/A24_F095_LCP-CRUISE_GammeSansBoite_1850x2000_b6630447-556c-406c-afdb-bc8145eb7f88_1024x1024@2x.jpg?v=1713342298" alt="GeeksforGeeks" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://www.fashionpress.it/wp-content/uploads/2019/02/HOLY-PEONY-2.jpg" alt="A computer science portal" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://elegancestyle.ae/pub/media/catalog/product/cache/0856f186bc03fe125c95330ee73ab913/s/1/s15kckq_i1pi46jz2olqx8f4.jpeg" alt="This is an example of" class="slide-image">
-            </div>
-            <div class="slide">
-                <img src="https://scentbeeusa.com/cdn/shop/products/DiorGris.jpg?v=1629063061" alt="Slideshow with HTML and CSS only" class="slide-image">
-            </div>
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-smile"></i>
+            <h3>Skincare</h3>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-tshirt"></i>
+            <h3>Clothing</h3>
+        </div>
+    </a>
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-briefcase"></i>
+            <h3>Accessories</h3>
+        </div>
+    </a>
+    <a href="">
+        <div class="bo-loch_item">
+            <i class="fas fa-shoe-prints"></i>
+            <h3>Footwear</h3>
+        </div>
+    </a>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-Discover">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>MEN'S FRAGRANCES</h1>
+</div>
+<!-- TỪ DISCOVER -->
+<div class="button-container_discover">
+    <div class="button-discover" style="margin-top: 0px;margin-bottom: 60px;">
+        <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q30 0 100 10 Q160 20 190 10 Q190 40 180 50 Q160 70 90 60 Q40 50 20 60 Q0 70 20 20"
+                fill="black" />
+        </svg>
+        <div class="button-text_discover">Discover</div>
+    </div>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverOne">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>MAKEUP</h1>
+</div>
+<!-- SLIDE SHOW CHỨA HÌNH ẢNH LỚN  -->
+<div class="slideshow">
+    <div class="slide-wrapper">
+        <div class="slide">
+            <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/Video_Cover_1440x800-min.png?v=1657612760"
+                alt="GeeksforGeeks" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/FALL_LOOK_750x610-1-min.jpg?v=1657758424"
+                alt="A computer science portal" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://cdn.shopify.com/s/files/1/0569/1663/9914/files/FALL_LOOK_1850x1850-4.jpg?v=1657758495"
+                alt="This is an example of" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.beautyscene.net/wp-content/uploads/2016/09/Natalie-Portman-Rouge-Dior-FW16-00.jpg"
+                alt="Slideshow with HTML and CSS only" class="slide-image">
         </div>
     </div>
-
-    <div class="Discover">
-        <p>Exclusively on Dior.com.au, receive a free sample with your full-size purchase and try the fragrance before wearing or gifting it*. This gives you the option of returning your unopened bottle** for reimbursement if necessary.</p>
+</div>
+<!-- TỪ DISCOVER -->
+<div class="button-container_discover">
+    <div class="button-discover" style="margin-bottom: 50px;">
+        <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q30 0 100 10 Q160 20 190 10 Q190 40 180 50 Q160 70 90 60 Q40 50 20 60 Q0 70 20 20"
+                fill="black" />
+        </svg>
+        <div class="button-text_discover">Discover</div>
     </div>
-
-    <div class="Discover">
-        <h1>Discover</h1>
-    </div>
-
-    <div class="Discover">
-        <h1>TRY IT FIRST - LA COLLECTION PRIVEE</h1>
-    </div>
-
-    <div class="product-Discover" id="product-DiscoverFour">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-
-    <div class="Discover">
-        <h1>LIMITED EDITIONS & ONLINE EXCLUSIVES</h1>
-    </div>
-
-    <div class="product-Discover" id="product-DiscoverFive">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-
-    <div class="Discover">
-        <h1>EXCLUSIVE SERVICES</h1>
-    </div>
-
-
-    <div class="product-Discover" id="product-DiscoverSix">
-        <!-- sản phẩm sẽ được thêm vào đây -->
-    </div>
-
-    <div class="Discover">
-        <h1>OUR BOUTIQUES</h1>
-    </div>
-
-    <div class="Discover">
-        <button><a href="">Find nearest store</a></button>
-    </div>
-
-    <footer class="footer">
-        <div class="Discover">
-            <h1>THE E-BOUTIQUE SERVICES</h1>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverTwo">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>SKINCARE</h1>
+</div>
+<!-- SLIDE SHOW CHỨA HÌNH ẢNH LỚN  -->
+<div class="slideshow">
+    <div class="slide-wrapper">
+        <div class="slide">
+            <img src="https://nutrimetics.com/wp-content/uploads/2024/05/new-skincare-customers.jpg"
+                alt="GeeksforGeeks" class="slide-image">
         </div>
-        <div class="eboutique-services">
-            <div class="service">
-                <i class="fa-solid fa-truck"></i>
-                <h2>COMPLIMENTARY SHIPPING</h2>
-                <p>Enjoy complimentary Standard shipping for orders $90 or more.</p>
-            </div>
-            <div class="service">
-                <i class="fa-solid fa-arrows-spin"></i>
-                <h2>DELIVERY & RETURNS</h2>
-                <p>Standard and Express delivery to Street addresses or PO Boxes. Free 30 day returns.</p>
-            </div>
-            <div class="service">
-                <i class="fa-solid fa-gift"></i>
-                <h2>THE ART OF GIFTING</h2>
-                <p>Your order will be presented in an iconic Dior gift box with a personalised message.</p>
-            </div>
-            <div class="service">
-                <i class="fa-brands fa-sketch"></i>
-                <h2>COMPLIMENTARY TRIAL SIZE</h2>
-                <p>Receive a choice of 2 complimentary samples with any order.</p>
+        <div class="slide">
+            <img src="https://static.independent.co.uk/2021/09/02/14/17152937-34f93bbc-c504-4849-b8cb-0548da3384cf.jpg?quality=75&width=1200&auto=webp"
+                alt="A computer science portal" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.skinbox.ie/wp-content/uploads/2021/02/shutterstock_763618693-scaled-e1612973761234.jpg"
+                alt="This is an example of" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.oskiaskincare.com/cdn/shop/articles/A-guide-to-layering-your-skincare.jpg?v=1697643024&width=1100"
+                alt="Slideshow with HTML and CSS only" class="slide-image">
+        </div>
+    </div>
+</div>
+<!-- TỪ DISCOVER -->
+<div class="button-container_discover">
+    <div class="button-discover" style="margin-bottom: 40px;">
+        <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q30 0 100 10 Q160 20 190 10 Q190 40 180 50 Q160 70 90 60 Q40 50 20 60 Q0 70 20 20"
+                fill="black" />
+        </svg>
+        <div class="button-text_discover">Discover</div>
+    </div>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverThree">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>TRY IT FIRST EXCLUSIVELY ON DIOR.COM.AU</h1>
+</div>
+<!-- SLIDE SHOW CHỨA HÌNH ẢNH LỚN  -->
+<div class="slideshow">
+    <div class="slide-wrapper">
+        <div class="slide">
+            <img src="https://shop-beauty.dior.sa/cdn/shop/files/A24_F095_LCP-CRUISE_GammeSansBoite_1850x2000_b6630447-556c-406c-afdb-bc8145eb7f88_1024x1024@2x.jpg?v=1713342298"
+                alt="GeeksforGeeks" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://www.fashionpress.it/wp-content/uploads/2019/02/HOLY-PEONY-2.jpg"
+                alt="A computer science portal" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://elegancestyle.ae/pub/media/catalog/product/cache/0856f186bc03fe125c95330ee73ab913/s/1/s15kckq_i1pi46jz2olqx8f4.jpeg"
+                alt="This is an example of" class="slide-image">
+        </div>
+        <div class="slide">
+            <img src="https://scentbeeusa.com/cdn/shop/products/DiorGris.jpg?v=1629063061"
+                alt="Slideshow with HTML and CSS only" class="slide-image">
+        </div>
+    </div>
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <p>Exclusively on Dior.com.au, receive a free sample with your full-size purchase and try the fragrance
+        before wearing or gifting it*. This gives you the option of returning your unopened bottle** for
+        reimbursement if necessary.</p>
+</div>
+<!-- TỪ DISCOVER -->
+<div class="button-container_discover">
+    <div class="button-discover" style="margin-bottom: 0px;">
+        <svg viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 20 Q30 0 100 10 Q160 20 190 10 Q190 40 180 50 Q160 70 90 60 Q40 50 20 60 Q0 70 20 20"
+                fill="black" />
+        </svg>
+        <div class="button-text_discover">Discover</div>
+    </div>
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>TRY IT FIRST - LA COLLECTION PRIVEE</h1>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverFour">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>LIMITED EDITIONS & ONLINE EXCLUSIVES</h1>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverFive">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>EXCLUSIVE SERVICES</h1>
+</div>
+<!-- PHẦN HIỂN THỊ CÁC SẢN PHẨM(HÌNH ẢNH) NHỎ -->
+<div class="product-Discover" id="product-DiscoverSix">
+    <!-- sản phẩm sẽ được thêm vào đây -->
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <h1>OUR BOUTIQUES</h1>
+</div>
+<!-- HIỆN THỊ CHỮ DƯỚI PHẦN SẢN PHẨM-->
+<div class="Discover">
+    <button><a href="">Find nearest store</a></button>
+</div>
+<!-- Phần FOOTER TRÊN -->
+<footer class="footer">
+    <div class="Discover footer_h1">
+        <h1>THE E-BOUTIQUE SERVICES</h1>
+    </div>
+    <div class="eboutique-services">
+        <div class="service">
+            <i class="fa-solid fa-truck"></i>
+            <h2>COMPLIMENTARY SHIPPING</h2>
+            <p>Enjoy complimentary Standard shipping for orders $90 or more.</p>
+        </div>
+        <div class="service">
+            <i class="fa-solid fa-arrows-spin"></i>
+            <h2>DELIVERY & RETURNS</h2>
+            <p>Standard and Express delivery to Street addresses or PO Boxes. Free 30 day returns.</p>
+        </div>
+        <div class="service">
+            <i class="fa-solid fa-gift"></i>
+            <h2>THE ART OF GIFTING</h2>
+            <p>Your order will be presented in an iconic Dior gift box with a personalised message.</p>
+        </div>
+        <div class="service">
+            <i class="fa-brands fa-sketch"></i>
+            <h2>COMPLIMENTARY TRIAL SIZE</h2>
+            <p>Receive a choice of 2 complimentary samples with any order.</p>
+        </div>
+    </div>
+</footer>
+<!-- PHẦN FOOTER DƯỚI -->
+<footer class="footer-end">
+    <div class="eboutique-services-end">
+        <div class="service-end">
+            <h3>NEWSLETTER</h3>
+            <p>Sign up to receive information and news</p>
+            <div class="email-subscribe">
+                <input type="text" name="search-email" id="search-email" placeholder="*Your email address*">
+                <button type="submit">OK</button>
             </div>
         </div>
-    </footer>
-
-    <footer class="footer-end">
-        <div class="eboutique-services-end">
-            <div class="service-end">
-                <h3>NEWSLETTER</h3>
-                <p>Sign up to receive information and news</p>
-                <div>
-                    <input type="text" name="search-email" id="search-email"  placeholder="Email address">
-                    <button type="submit">OK</button>
+        <div class="service-end">
+            <ul><a href="#">Contact Us</a></ul>
+            <ul><a href="#">Delivery & Returns</a></ul>
+            <ul><a href="#">FAQ</a></ul>
+            <ul><a href="#">Legal Terms & Conditions</a></ul>
+            <ul><a href="#">Privacy & Data Protection</a></ul>
+        </div>
+        <div class="service-end">
+            <h3>FOLLOW US</h3>
+            <div class="footer-end_container">
+                <div class="item"><a href="https://facebook.com/?locale=vi_VN"><i
+                            class="fa-brands fa-facebook"></i></a></div>
+                <div class="item"><a href="https://x.com/?lang=vi&mx=2"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="item"><a href="https://www.tiktok.com/vi-VN/"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+                <div class="item"><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="service-end">
-                    <ul><a href="#">Contact Us</a></ul>
-                    <ul><a href="#">Delivery & Returns</a></ul>
-                    <ul><a href="#">FAQ</a></ul>
-                    <ul><a href="#">Legal Terms & Conditions</a></ul>
-                    <ul><a href="#">Privacy & Data Protection</a></ul>
-            </div>
-            <div class="service-end">
-                <h3>FOLLOW US</h3>
-                <div class="footer-end_container">
-                    <div class="item"><a href="https://facebook.com/?locale=vi_VN"><i class="fa-brands fa-facebook"></i></a></div>
-                    <div class="item"><a href="https://x.com/?lang=vi&mx=2"><i class="fa-brands fa-twitter"></i></a></div>
-                    <div class="item"><a href="https://www.tiktok.com/vi-VN/"><i class="fa-brands fa-tiktok"></i></a></div>
-                    <div class="item"><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a></div>
-                </div>                
-                <h3>COUNTRY / REGION</h3>
-                <h3>VietNam</h3>
-            </div>
+            <h3>COUNTRY / REGION</h3>
+            <h3 class="country-region"><i class="fa-solid fa-cart-shopping"></i> VietNam</h3>
         </div>
-    </footer>
+    </div>
+</footer>
     <script src="script.js"></script>
 </body>
 </html>
