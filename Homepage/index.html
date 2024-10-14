@@ -521,6 +521,28 @@
         </div>
     </div>
 </footer>
+<!-- PHẦN GIỎ HÀNG -->
+<div id="cartContainer" class="cart-container">
+    <div class="cart-header">
+        <h2>Shopping Cart (<span id="total-items">0</span> products)</h2>
+        <span class="close-btn" onclick="closeCart()">&times;</span>
+    </div>
+
+    <div id="cart-products"></div>
+
+    <div class="cart-footer">
+        <div class="voucher">
+            <label><input type="checkbox" id="select-all"> Select all</label>
+        </div>
+        <div class="total">
+            <span>Total ( <span id="total-products">0</span> products):</span>
+            <span id="total-price">$0.00</span>
+        </div>
+        <button class="order-btn">Order</button>
+    </div>
+</div>
+<!-- PHẦN BACKGROUND CHO GIỎ HÀNG -->
+<div class="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>
