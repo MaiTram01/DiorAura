@@ -22,7 +22,7 @@
 
     <nav class="header-right">
         <div class="input-container">
-            <input type="text" id="header-input" placeholder="Search on dior.com">
+            <input type="text" id="header-input" class="header-input" placeholder="Search on dior.com">
             <button class="button-search" onclick="search()">
                 <i style="color:rgb(176, 168, 168);" class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -543,7 +543,20 @@
     </div>
 </div>
 <!-- PHẦN BACKGROUND CHO GIỎ HÀNG -->
-<div class="overlay"></div>
+  <!-- PHẦN HOT SEARCH -->
+  <div class="Search" id="search" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 200px; z-index: 1001; background-color: white;">
+    <div class="hot-search" id="hot-search">
+        <a href="#"><img src="./Image/fire - Copy.jpg" alt="Mô tả ảnh" /></a>
+        <a href="#"><h2>Hot search</h2></a>
+    </div>
+    <div class="category" id="category">
+        <div class="category-P"><a href="link-to-dior-sauvage">Dior Sauvage</a></div>
+        <div class="category-P"><a href="link-to-dior-forever-foundation">Dior Forever Foundation</a></div>
+        <div class="category-P"><a href="link-to-dior-addict-lip-glow">Dior Addict Lip Glow</a></div>
+        <div class="category-P"><a href="link-to-diors-makeup-line">Dior's Makeup Line</a></div>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

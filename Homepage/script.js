@@ -602,3 +602,38 @@ overlay.addEventListener('click', function () {
     cartContainer.style.display = 'none'; // Ẩn giỏ hàng
     overlay.style.display = 'none'; // Ẩn lớp phủ
 });
+
+
+// PHẦN HOT SEARCH
+ // Hàm tìm kiếm
+ function search() {
+    const query = document.getElementById('header-input').value; // Lấy giá trị từ ô tìm kiếm
+    const searchUrl = `search-result.html?q=${encodeURIComponent(query)}`; // Tạo URL tìm kiếm
+    window.location.href = searchUrl; // Chuyển hướng đến trang tìm kiếm
+}
+
+// Hàm để hiển thị lớp phủ và các phần liên quan
+function showOverlay() {
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('search').style.display = 'block'; // Hiển thị .Search
+}
+
+// Hàm để ẩn lớp phủ và các phần liên quan
+function hideOverlay() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('search').style.display = 'none'; // Ẩn .Search
+}
+
+// Thêm sự kiện khi ô input được click hoặc focus
+const headerInput = document.getElementById('header-input');
+headerInput.addEventListener('focus', showOverlay);
+headerInput.addEventListener('click', showOverlay);
+
+// Thêm sự kiện khi người dùng click vào lớp phủ để ẩn nó
+const overlay1 = document.getElementById('overlay');
+overlay1.addEventListener('click', hideOverlay);
+
+// Ẩn .Search và .overlay khi trang tải lên
+document.addEventListener('DOMContentLoaded', function() {
+    hideOverlay();
+});
