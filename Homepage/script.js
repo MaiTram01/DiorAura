@@ -637,3 +637,86 @@ overlay1.addEventListener('click', hideOverlay);
 document.addEventListener('DOMContentLoaded', function() {
     hideOverlay();
 });
+
+
+// PHẦN ĐĂNG KÝ ĐĂNG NHẬP
+ // Get elements
+ const registerButton = document.getElementById('register');
+ const loginButton = document.getElementById('login');
+ const container = document.getElementById('dior-lg');
+
+ const dangnhapBtns = document.querySelectorAll('.Dangnhap');
+ const overlay2 = document.getElementById('overlay');
+ const incluLsandsg = document.querySelector('.inclu-lsandsg');
+
+ // Show sign-in form
+ registerButton.addEventListener("click", () => {
+     container.classList.add("right-panel-active");
+ });
+
+ // Show login form
+ loginButton.addEventListener("click", () => {
+     container.classList.remove("right-panel-active");
+ });
+
+ // Event for clicking on login/sign-in buttons in header
+ dangnhapBtns.forEach(btn => {
+     btn.addEventListener('click', function () {
+         overlay2.style.display = 'block';
+         incluLsandsg.style.display = 'flex';
+     });
+ });
+
+ // Event for clicking on overlay to close form
+ overlay2.addEventListener('click', function () {
+     overlay2.style.display = 'none';
+     incluLsandsg.style.display = 'none';
+     container.classList.remove("right-panel-active");
+ });
+
+ // Handle form submission for login form
+ const loginForm = document.querySelector('.login-container form');
+ loginForm.addEventListener('submit', function (e) {
+     e.preventDefault();
+     // Perform login logic here
+
+     // Close the form and overlay
+     overlay2.style.display = 'none';
+     incluLsandsg.style.display = 'none';
+
+     // Reset the form fields if necessary
+     loginForm.reset();
+ });
+
+ // Handle form submission for sign-in form
+ const registerForm = document.querySelector('.register-container form');
+ registerForm.addEventListener('submit', function (e) {
+     e.preventDefault();
+     // Perform sign-in logic here
+
+     // Close the form and overlay
+     overlay2.style.display = 'none';
+     incluLsandsg.style.display = 'none';
+
+     // Reset the form fields if necessary
+     registerForm.reset();
+ });
+
+// var users = JSON.parse(localStorage.getItem("users"));
+// console.log(users)
+const registerSubmit = document.getElementById('re_submit');
+registerSubmit.addEventListener("click", () => {
+    var id = users.length + 1;
+    var name = document.getElementById('name_user').value ;
+    var email = document.getElementById('email_user').value ;
+    var password = document.getElementById('password_user').value ;
+    const newUser = {
+        id: id,
+        name: name,
+        email: email,
+        password: password
+    };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    location.reload()
+})
