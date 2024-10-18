@@ -145,7 +145,6 @@ const chatList = document.getElementById('chatList');
 let currentChatId = null;
 
 // PHẦN CHATBOX
-// Khi ấn vào ảnh đại diện nó sẽ quay lại trang 
 // Hàm lấy thời gian hiện tại ở định dạng HH:MM
 function getCurrentTime() {
     const now = new Date();
@@ -162,14 +161,11 @@ function displayMessages(chatId) {
     const chat = chats[chatId];
     if (!chat) return;
 
-    // Cập nhật tiêu đề và hình ảnh ở header
     chatHeaderName.innerHTML = `${chat.name} <br><span>online</span>`;
     chatHeaderImage.src = chat.image;
 
-    // Xóa tất cả các tin nhắn cũ
-    chatBox.innerHTML = '';
 
-    // Hiển thị tất cả các tin nhắn
+    chatBox.innerHTML = '';
     chat.messages.forEach(msg => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
@@ -185,31 +181,27 @@ function displayMessages(chatId) {
         messageElement.appendChild(messageParagraph);
         chatBox.appendChild(messageElement);
     });
-
-    // Cuộn xuống cuối container để xem tin nhắn mới
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 //PHẦN CHATBOX
-// Hàm xử lý khi nhấp vào một block trong danh sách chat
 function handleChatBlockClick(event) {
     const block = event.currentTarget;
     const chatId = block.getAttribute('data-chat-id');
 
-    if (currentChatId === chatId) return; // Nếu đã chọn, không làm gì
+    if (currentChatId === chatId) return; 
 
-    // Loại bỏ class 'active' khỏi tất cả các block
+
     document.querySelectorAll('.chatlist .block').forEach(b => b.classList.remove('active'));
 
-    // Thêm class 'active' vào block được nhấp
+
     block.classList.add('active');
 
-    // Cập nhật currentChatId
+
     currentChatId = chatId;
 
-    // Hiển thị tin nhắn tương ứng
+
     displayMessages(chatId);
 
-    // Nếu có số lượng tin nhắn chưa đọc, xóa nó
     const unreadBadge = block.querySelector('b');
     if (unreadBadge) {
         chats[chatId].unread = 0;
@@ -227,30 +219,25 @@ function handleChatBlockClick(event) {
     }
 }
 //PHẦN CHATBOX
-// Thêm sự kiện click cho tất cả các block trong chat list
 document.querySelectorAll('.chatlist .block').forEach(block => {
     block.addEventListener('click', handleChatBlockClick);
 });
 //PHẦN CHATBOX
-// Mở ra cuộc hội thoại đầu tiên khi click chuột
+
 const firstChatBlock = document.querySelector('.chatlist .block');
-// Mở khung chat khi nhấn vào bong bóng chat
 chatBubble.addEventListener('click', () => {
     container_chat.style.display = 'flex';
     chatBubble.style.display = 'none';
-    // Ẩn bong bóng chat khi mở khung chat
     if (firstChatBlock) {
         firstChatBlock.style.display = 'flex';
         firstChatBlock.click();
     }
 });
-// Đóng khung chat khi nhấn nút X
 closeChat.addEventListener('click', () => {
     container_chat.style.display = 'none';
-    chatBubble.style.display = 'flex'; // Hiển thị lại bong bóng chat
+    chatBubble.style.display = 'flex';
 });
 
-// Gửi tin nhắn khi nhấn vào icon send
 sendMessageBtn.addEventListener('click', () => {
     if (!currentChatId) {
         alert("Please select a chat first!");
@@ -260,107 +247,73 @@ sendMessageBtn.addEventListener('click', () => {
     const messageText = messageInput.value.trim();
     if (messageText !== '') {
         const currentTime = getCurrentTime();
-
-        // Tạo phần tử div chứa tin nhắn
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', 'my_message');
-
-        // Tạo phần tử p chứa nội dung tin nhắn và thời gian
         const messageParagraph = document.createElement('p');
         messageParagraph.innerHTML = `${messageText}<br><span>${currentTime}</span>`;
-
-        // Thêm phần tử p vào div tin nhắn
         messageElement.appendChild(messageParagraph);
-
-        // Thêm tin nhắn vào container tin nhắn
         chatBox.appendChild(messageElement);
-
-        // Thêm tin nhắn vào dữ liệu
         chats[currentChatId].messages.push({
             sender: 'me',
             text: messageText,
             time: currentTime
         });
-
-        // Cuộn xuống cuối container để xem tin nhắn mới
         chatBox.scrollTop = chatBox.scrollHeight;
-
-        // Xóa nội dung trong ô nhập sau khi gửi
         messageInput.value = '';
     }
 });
-
-// Gửi tin nhắn khi nhấn phím Enter
 messageInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         sendMessageBtn.click();
     }
 });
 
-// Lấy các phần tử cần thiết
 const searchInput = document.getElementById('search-input');
-const chatBlocks = document.querySelectorAll('.block'); // Sửa lại class thành 'block'
+const chatBlocks = document.querySelectorAll('.block'); 
 
 searchInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        const searchTerm = searchInput.value.toLowerCase(); // Chuyển đổi về chữ thường
-
-        // Đặt lại hiển thị cho tất cả các khung chat trước
+        const searchTerm = searchInput.value.toLowerCase();
         chatBlocks.forEach(chatBlock => {
-            chatBlock.style.display = 'flex'; // Hoặc 'block' tùy vào layout của bạn
+            chatBlock.style.display = 'flex'; 
         });
-
-        // Kiểm tra xem có khung chat nào trùng với input hay không
         let found = false;
         chatBlocks.forEach(chatBlock => {
-            const title = chatBlock.querySelector('h4').textContent.toLowerCase(); // Lấy tiêu đề và chuyển về chữ thường
+            const title = chatBlock.querySelector('h4').textContent.toLowerCase(); 
             if (title.includes(searchTerm)) {
-                found = true; // Đánh dấu là đã tìm thấy
+                found = true;
             } else {
-                chatBlock.style.display = 'none'; // Ẩn khung chat không trùng
+                chatBlock.style.display = 'none'; 
             }
         });
 
-        // Nếu không tìm thấy khung chat nào
         if (!found) {
             alert('Không tìm thấy chat nào phù hợp.');
         }
-
-        // Xóa nội dung ô input sau khi tìm kiếm
         searchInput.value = '';
     }
 });
-// Phần lấy tệp từ máy tính 
-// Lấy biểu tượng đính kèm và các phần tử đầu vào của tệp
 const attachIcon = document.getElementById('attachIcon');
 const fileInput = document.getElementById('fileInput');
-
-// Hàm xử lý việc gửi ảnh
 function sendImage(file) {
     const reader = new FileReader();
     reader.onload = function (event) {
         const imageDataUrl = event.target.result;
         const currentTime = getCurrentTime();
-
-        // Tạo đối tượng tin nhắn
         const message = {
             sender: 'me',
             type: 'image',
             content: imageDataUrl,
             time: currentTime
         };
-
-        // Thêm tin nhắn vào dữ liệu trò chuyện
         if (currentChatId) {
             chats[currentChatId].messages.push(message);
         }
 
-        // Hiển thị hình ảnh trong chatbox
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', 'my_message');
 
         const messageContent = document.createElement('p');
-        // Kiểm tra tin nhắn có phải là hình ảnh không
         if (message.type === 'image') {
             const img = document.createElement('img');
             img.src = message.content;
@@ -371,8 +324,6 @@ function sendImage(file) {
         } else {
             messageContent.innerHTML = `${message.text}<br><span>${message.time}</span>`;
         }
-
-        // Thêm thời gian nếu đó là tin nhắn văn bản
         if (message.type !== 'image') {
             const timeSpan = document.createElement('span');
             timeSpan.textContent = message.time;
@@ -382,18 +333,15 @@ function sendImage(file) {
         messageElement.appendChild(messageContent);
         chatBox.appendChild(messageElement);
 
-        // Cuộn xuống phía dưới
         chatBox.scrollTop = chatBox.scrollHeight;
     };
 
     reader.readAsDataURL(file);
 }
-// Trình xử lý sự kiện cho lần nhấp vào biểu tượng đính kèm
 attachIcon.addEventListener('click', () => {
     fileInput.click();
 });
 
-//Trình xử lý sự kiện để chọn tệp
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith('image/')) {
@@ -401,14 +349,10 @@ fileInput.addEventListener('change', (event) => {
     } else {
         alert('Please select a valid image file.');
     }
-
-    // Đặt lại giá trị đầu vào của tệp để cho phép tải lên lại cùng một tệp nếu cần
     fileInput.value = '';
 });
 
 //PHẦN ICON THÔNG BÁO
-// Hàm để hiện/ẩn ô thông báo khi nhấn vào icon
-// Hàm hiển thị/ẩn thông báo
 function toggleNotification() {
     var notificationBox = document.getElementById("notificationBox");
     if (notificationBox.style.display === "none" || notificationBox.style.display === "") {
@@ -417,43 +361,29 @@ function toggleNotification() {
         notificationBox.style.display = "none";
     }
 }
-// Hàm ẩn thông báo và cập nhật nội dung
 function hideNotification() {
-    // Lấy phần tử chứa thông báo
     var notificationContent = document.getElementById("ok");
-
-    // Cập nhật nội dung thông báo
     notificationContent.textContent = "Bạn đã đặt hàng thành công!";
-
-    // Ẩn hộp thông báo
     var notificationBox = document.getElementById("notificationBox");
     notificationBox.style.display = "none";
 }
 
 
 // PHẦN GIỎ HÀNG
-
-// Hàm đóng giỏ hàng và overlay
 function closeCart() {
     const cartContainer = document.getElementById('cartContainer');
     cartContainer.style.display = 'none';
     overlay.style.display = 'none';
 }
-
-// Hàm mở giỏ hàng
 function openCart() {
     const cartContainer = document.getElementById('cartContainer');
     cartContainer.style.display = 'block';
 }
-
-// Data giỏ hàng mẫu
 let cart = [
     { id: 1, name: 'Miss Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false },
     { id: 2, name: 'Sauvage Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false },
     { id: 3, name: 'Limit Dior', description: 'Eau de parfum - floral and fresh notes - 100ml', price: 825, quantity: 1, img: 'https://th.bing.com/th/id/OIP.BnnCxFUCOhaNiI_6YUXUugHaHa?rs=1&pid=ImgDetMain', selected: false }
 ];
-
-// Hàm cập nhật giỏ hàng trong giao diện
 function renderCart() {
     const cartContainer = document.getElementById('cart-products');
     cartContainer.innerHTML = '';
@@ -486,8 +416,6 @@ function renderCart() {
 
     updateTotal();
 }
-
-// Hàm cập nhật tổng số lượng và giá tiền
 function updateTotal() {
     const totalItems = document.getElementById('total-items');
     const totalProducts = document.getElementById('total-products');
@@ -507,24 +435,18 @@ function updateTotal() {
     totalProducts.textContent = totalQuantity;
     totalPrice.textContent = `$${totalCost.toFixed(2)}`;
 }
-
-// Hàm xoá sản phẩm khỏi giỏ hàng
 function deleteProduct(productId) {
     cart = cart.filter(item => item.id !== productId);
     renderCart();
 }
-
-// Hàm thay đổi số lượng sản phẩm
 function changeQuantity(productId, delta) {
     const product = cart.find(item => item.id === productId);
     if (product) {
         product.quantity += delta;
-        if (product.quantity < 1) product.quantity = 1; // Không để số lượng nhỏ hơn 1
+        if (product.quantity < 1) product.quantity = 1;
         renderCart();
     }
 }
-
-// Thêm sự kiện click cho các nút trong giỏ hàng
 document.addEventListener('click', function (e) {
     const target = e.target;
     const cartProductElement = target.closest('.cart-product');
@@ -553,8 +475,6 @@ document.addEventListener('click', function (e) {
         }
     }
 });
-
-// Chức năng "Select All"
 document.getElementById('select-all').addEventListener('change', function (e) {
     const isChecked = e.target.checked;
     cart.forEach(item => {
@@ -562,11 +482,7 @@ document.getElementById('select-all').addEventListener('change', function (e) {
     });
     renderCart();
 });
-
-// Render giỏ hàng lần đầu
 renderCart();
-
-// Hàm render sản phẩm (nếu cần)
 function renderProducts(cardList, elementId) {
     let div = cardList.map(p =>
         `<div class='course-item'>
@@ -579,68 +495,53 @@ function renderProducts(cardList, elementId) {
     ).join("");
     document.getElementById(elementId).innerHTML = div;
 }
-
-// Hàm tìm kiếm (nếu cần)
 function search() {
     const query = document.getElementById('header-input').value;
     console.log('Searching for:', query);
-    // Thêm logic tìm kiếm tại đây
 }
-// Lấy các phần tử từ DOM
-const cartIcon = document.querySelector('.fa-cart-shopping'); // Biểu tượng giỏ hàng
-const cartContainer = document.querySelector('.cart-container'); // Giỏ hàng
-const overlay = document.querySelector('.overlay'); // Lớp overlay
+const cartIcon = document.querySelector('.fa-cart-shopping');
+const cartContainer = document.querySelector('.cart-container'); 
+const overlay = document.querySelector('.overlay');
 
-// Khi nhấn vào biểu tượng giỏ hàng
 cartIcon.addEventListener('click', function () {
-    cartContainer.style.display = 'block'; // Hiển thị giỏ hàng
-    overlay.style.display = 'block'; // Hiển thị lớp phủ
+    cartContainer.style.display = 'block'; 
+    overlay.style.display = 'block'; 
 });
 
-// Khi nhấn vào overlay thì ẩn cả overlay và giỏ hàng
 overlay.addEventListener('click', function () {
-    cartContainer.style.display = 'none'; // Ẩn giỏ hàng
-    overlay.style.display = 'none'; // Ẩn lớp phủ
+    cartContainer.style.display = 'none'; 
+    overlay.style.display = 'none';
 });
 
 
 // PHẦN HOT SEARCH
- // Hàm tìm kiếm
  function search() {
-    const query = document.getElementById('header-input').value; // Lấy giá trị từ ô tìm kiếm
-    const searchUrl = `search-result.html?q=${encodeURIComponent(query)}`; // Tạo URL tìm kiếm
-    window.location.href = searchUrl; // Chuyển hướng đến trang tìm kiếm
+    const query = document.getElementById('header-input').value; 
+    const searchUrl = `search-result.html?q=${encodeURIComponent(query)}`; 
+    window.location.href = searchUrl; 
 }
-
-// Hàm để hiển thị lớp phủ và các phần liên quan
 function showOverlay() {
     document.getElementById('overlay').style.display = 'block';
-    document.getElementById('search').style.display = 'block'; // Hiển thị .Search
+    document.getElementById('search').style.display = 'block'; 
 }
-
-// Hàm để ẩn lớp phủ và các phần liên quan
 function hideOverlay() {
     document.getElementById('overlay').style.display = 'none';
-    document.getElementById('search').style.display = 'none'; // Ẩn .Search
+    document.getElementById('search').style.display = 'none'; 
 }
 
-// Thêm sự kiện khi ô input được click hoặc focus
 const headerInput = document.getElementById('header-input');
 headerInput.addEventListener('focus', showOverlay);
 headerInput.addEventListener('click', showOverlay);
 
-// Thêm sự kiện khi người dùng click vào lớp phủ để ẩn nó
 const overlay1 = document.getElementById('overlay');
 overlay1.addEventListener('click', hideOverlay);
 
-// Ẩn .Search và .overlay khi trang tải lên
 document.addEventListener('DOMContentLoaded', function() {
     hideOverlay();
 });
 
 
 // PHẦN ĐĂNG KÝ ĐĂNG NHẬP
-// Lấy phần tử cần thiết
 const registerButton = document.getElementById('register');
 const loginButton = document.getElementById('login');
 const container = document.getElementById('dior-lg');
@@ -648,17 +549,16 @@ const container = document.getElementById('dior-lg');
 const dangnhapBtns = document.querySelectorAll('.Dangnhap');
 const overlay2 = document.getElementById('overlay');
 const incluLsandsg = document.querySelector('.inclu-lsandsg');
-const nameInput = document.getElementById('nameInput'); // Lấy input Name
-const dangNhapLi = document.querySelectorAll('.Dangnhap'); // Lấy tất cả các li có class Dangnhap
-const logoutBtn = document.querySelector('.Dangxuat'); // Lấy nút Logout
-const loginForm = document.querySelector('.login-container form'); // Lấy form login
-const loginEmailInput = document.querySelector('.login-container input[type="email"]'); // Lấy input email login
-const loginPasswordInput = document.querySelector('.login-container input[type="password"]'); // Lấy input password login
+const nameInput = document.getElementById('nameInput');
+const dangNhapLi = document.querySelectorAll('.Dangnhap'); 
+const logoutBtn = document.querySelector('.Dangxuat'); 
+const loginForm = document.querySelector('.login-container form'); 
+const loginEmailInput = document.querySelector('.login-container input[type="email"]'); 
+const loginPasswordInput = document.querySelector('.login-container input[type="password"]'); 
 
-// Kiểm tra nếu đã có tên trong Local Storage và hiển thị lên header
 document.addEventListener('DOMContentLoaded', function () {
     const savedName = localStorage.getItem('userName');
-    const registered = localStorage.getItem('isRegistered'); // Kiểm tra xem đã đăng ký chưa
+    const registered = localStorage.getItem('isRegistered'); 
 
     if (savedName && registered === 'true') {
         dangNhapLi.forEach((li, index) => {
@@ -668,14 +568,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 li.style.display = 'none';
             }
         });
-        // Hiển thị nút Logout khi đã đăng nhập
+      
         logoutBtn.style.display = 'block';
     } else {
-        // Ẩn nút Logout nếu chưa đăng nhập
+        
         logoutBtn.style.display = 'none';
     }
 
-    // Nếu đã có email và password trong Local Storage, tự động điền vào form login
+
     const savedEmail = localStorage.getItem('userEmail');
     const savedPassword = localStorage.getItem('userPassword');
     if (savedEmail && savedPassword) {
@@ -684,17 +584,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Show sign-in form
+
 registerButton.addEventListener("click", () => {
     container.classList.add("right-panel-active");
 });
 
-// Show login form
+
 loginButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
-// Event for clicking on login/sign-in buttons in header
 dangnhapBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         overlay2.style.display = 'block';
@@ -702,74 +601,61 @@ dangnhapBtns.forEach(btn => {
     });
 });
 
-// Event for clicking on overlay to close form
+
 overlay2.addEventListener('click', function () {
     overlay2.style.display = 'none';
     incluLsandsg.style.display = 'none';
     container.classList.remove("right-panel-active");
 });
 
-// Handle form submission for sign-in form
 const registerForm = document.querySelector('.register-container form');
 registerForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Lấy giá trị từ input Name, Email và Password
     const name = nameInput.value;
     const email = registerForm.querySelector('input[type="email"]').value;
     const password = registerForm.querySelector('input[type="password"]').value;
 
-    // Kiểm tra tính hợp lệ của dữ liệu
     if (!name || !email || !password) {
         alert('Please fill in all fields to sign in.');
-        return; // Dừng lại nếu chưa nhập đầy đủ thông tin
+        return;
     }
 
-    // Lưu thông tin vào Local Storage nếu hợp lệ
     localStorage.setItem('userName', name);
     localStorage.setItem('userEmail', email);
     localStorage.setItem('userPassword', password);
-    localStorage.setItem('isRegistered', 'true'); // Đánh dấu là đã đăng ký tài khoản
+    localStorage.setItem('isRegistered', 'true'); 
 
-    // Thay đổi nội dung li trong header
     dangNhapLi.forEach((li, index) => {
-        if (index === 0) {  // Thay thế nội dung của thẻ li đầu tiên
+        if (index === 0) {  
             li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${name}`;
         } else {
-            li.style.display = 'none';  // Ẩn các li còn lại
+            li.style.display = 'none'; 
         }
     });
 
-    // Hiển thị nút Logout khi đã đăng nhập
     logoutBtn.style.display = 'block';
 
-    // Đóng form và overlay
     overlay2.style.display = 'none';
     incluLsandsg.style.display = 'none';
 
-    // Reset form nếu cần
     registerForm.reset();
 });
 
-// Handle login form submission
 loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Lấy giá trị email và password từ form login
     const email = loginEmailInput.value;
     const password = loginPasswordInput.value;
 
-    // Lấy dữ liệu email và password đã lưu trong Local Storage
     const savedEmail = localStorage.getItem('userEmail');
     const savedPassword = localStorage.getItem('userPassword');
-    const registered = localStorage.getItem('isRegistered'); // Kiểm tra trạng thái đăng ký
+    const registered = localStorage.getItem('isRegistered'); 
 
-    // Kiểm tra email và password có khớp với dữ liệu lưu trữ không và đã đăng ký chưa
     if (email === savedEmail && password === savedPassword && registered === 'true') {
         alert('Login successful!');
         logoutBtn.style.display = 'block';
 
-        // Thay đổi nội dung li trong header với tên người dùng
         const savedName = localStorage.getItem('userName');
         dangNhapLi.forEach((li, index) => {
             if (index === 0) {
@@ -779,7 +665,6 @@ loginForm.addEventListener('submit', function (e) {
             }
         });
 
-        // Đóng form và overlay
         overlay2.style.display = 'none';
         incluLsandsg.style.display = 'none';
     } else {
@@ -787,21 +672,15 @@ loginForm.addEventListener('submit', function (e) {
     }
 });
 
-// Handle logout
 logoutBtn.addEventListener('click', function () {
-    // Không xóa userName, chỉ cần ẩn giao diện đăng nhập
-    // Chỉ reset giao diện mà không xóa dữ liệu Local Storage
     dangNhapLi.forEach(li => {
         li.style.display = 'block';
         if (li.innerHTML.includes('fa-user-large')) {
             li.innerHTML = `<i class="fa-solid fa-user-large"></i> Log in`;
         }
     });
-    // Ẩn nút Logout sau khi đăng xuất
     logoutBtn.style.display = 'none';
 });
-// var users = JSON.parse(localStorage.getItem("users"));
-// console.log(users)
 const registerSubmit = document.getElementById('re_submit');
 registerSubmit.addEventListener("click", () => {
     var id = users.length + 1;
