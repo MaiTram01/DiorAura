@@ -640,76 +640,174 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // PHẦN ĐĂNG KÝ ĐĂNG NHẬP
- // Get elements
- const registerButton = document.getElementById('register');
- const loginButton = document.getElementById('login');
- const container = document.getElementById('dior-lg');
+// Lấy phần tử cần thiết
+const registerButton = document.getElementById('register');
+const loginButton = document.getElementById('login');
+const container = document.getElementById('dior-lg');
 
- const dangnhapBtns = document.querySelectorAll('.Dangnhap');
- const overlay2 = document.getElementById('overlay');
- const incluLsandsg = document.querySelector('.inclu-lsandsg');
+const dangnhapBtns = document.querySelectorAll('.Dangnhap');
+const overlay2 = document.getElementById('overlay');
+const incluLsandsg = document.querySelector('.inclu-lsandsg');
+const nameInput = document.getElementById('nameInput'); // Lấy input Name
+const dangNhapLi = document.querySelectorAll('.Dangnhap'); // Lấy tất cả các li có class Dangnhap
+const logoutBtn = document.querySelector('.Dangxuat'); // Lấy nút Logout
+const loginForm = document.querySelector('.login-container form'); // Lấy form login
+const loginEmailInput = document.querySelector('.login-container input[type="email"]'); // Lấy input email login
+const loginPasswordInput = document.querySelector('.login-container input[type="password"]'); // Lấy input password login
 
- // Show sign-in form
- registerButton.addEventListener("click", () => {
-     container.classList.add("right-panel-active");
- });
+// Kiểm tra nếu đã có tên trong Local Storage và hiển thị lên header
+document.addEventListener('DOMContentLoaded', function () {
+    const savedName = localStorage.getItem('userName');
+    const registered = localStorage.getItem('isRegistered'); // Kiểm tra xem đã đăng ký chưa
 
- // Show login form
- loginButton.addEventListener("click", () => {
-     container.classList.remove("right-panel-active");
- });
+    if (savedName && registered === 'true') {
+        dangNhapLi.forEach((li, index) => {
+            if (index === 0) {
+                li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${savedName}`;
+            } else {
+                li.style.display = 'none';
+            }
+        });
+        // Hiển thị nút Logout khi đã đăng nhập
+        logoutBtn.style.display = 'block';
+    } else {
+        // Ẩn nút Logout nếu chưa đăng nhập
+        logoutBtn.style.display = 'none';
+    }
 
- // Event for clicking on login/sign-in buttons in header
- dangnhapBtns.forEach(btn => {
-     btn.addEventListener('click', function () {
-         overlay2.style.display = 'block';
-         incluLsandsg.style.display = 'flex';
-     });
- });
+    // Nếu đã có email và password trong Local Storage, tự động điền vào form login
+    const savedEmail = localStorage.getItem('userEmail');
+    const savedPassword = localStorage.getItem('userPassword');
+    if (savedEmail && savedPassword) {
+        loginEmailInput.value = savedEmail;
+        loginPasswordInput.value = savedPassword;
+    }
+});
 
- // Event for clicking on overlay to close form
- overlay2.addEventListener('click', function () {
-     overlay2.style.display = 'none';
-     incluLsandsg.style.display = 'none';
-     container.classList.remove("right-panel-active");
- });
+// Show sign-in form
+registerButton.addEventListener("click", () => {
+    container.classList.add("right-panel-active");
+});
 
- // Handle form submission for login form
- const loginForm = document.querySelector('.login-container form');
- loginForm.addEventListener('submit', function (e) {
-     e.preventDefault();
-     // Perform login logic here
+// Show login form
+loginButton.addEventListener("click", () => {
+    container.classList.remove("right-panel-active");
+});
 
-     // Close the form and overlay
-     overlay2.style.display = 'none';
-     incluLsandsg.style.display = 'none';
+// Event for clicking on login/sign-in buttons in header
+dangnhapBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        overlay2.style.display = 'block';
+        incluLsandsg.style.display = 'flex';
+    });
+});
 
-     // Reset the form fields if necessary
-     loginForm.reset();
- });
+// Event for clicking on overlay to close form
+overlay2.addEventListener('click', function () {
+    overlay2.style.display = 'none';
+    incluLsandsg.style.display = 'none';
+    container.classList.remove("right-panel-active");
+});
 
- // Handle form submission for sign-in form
- const registerForm = document.querySelector('.register-container form');
- registerForm.addEventListener('submit', function (e) {
-     e.preventDefault();
-     // Perform sign-in logic here
+// Handle form submission for sign-in form
+const registerForm = document.querySelector('.register-container form');
+registerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-     // Close the form and overlay
-     overlay2.style.display = 'none';
-     incluLsandsg.style.display = 'none';
+    // Lấy giá trị từ input Name, Email và Password
+    const name = nameInput.value;
+    const email = registerForm.querySelector('input[type="email"]').value;
+    const password = registerForm.querySelector('input[type="password"]').value;
 
-     // Reset the form fields if necessary
-     registerForm.reset();
- });
+    // Kiểm tra tính hợp lệ của dữ liệu
+    if (!name || !email || !password) {
+        alert('Please fill in all fields to sign in.');
+        return; // Dừng lại nếu chưa nhập đầy đủ thông tin
+    }
 
+    // Lưu thông tin vào Local Storage nếu hợp lệ
+    localStorage.setItem('userName', name);
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userPassword', password);
+    localStorage.setItem('isRegistered', 'true'); // Đánh dấu là đã đăng ký tài khoản
+
+    // Thay đổi nội dung li trong header
+    dangNhapLi.forEach((li, index) => {
+        if (index === 0) {  // Thay thế nội dung của thẻ li đầu tiên
+            li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${name}`;
+        } else {
+            li.style.display = 'none';  // Ẩn các li còn lại
+        }
+    });
+
+    // Hiển thị nút Logout khi đã đăng nhập
+    logoutBtn.style.display = 'block';
+
+    // Đóng form và overlay
+    overlay2.style.display = 'none';
+    incluLsandsg.style.display = 'none';
+
+    // Reset form nếu cần
+    registerForm.reset();
+});
+
+// Handle login form submission
+loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Lấy giá trị email và password từ form login
+    const email = loginEmailInput.value;
+    const password = loginPasswordInput.value;
+
+    // Lấy dữ liệu email và password đã lưu trong Local Storage
+    const savedEmail = localStorage.getItem('userEmail');
+    const savedPassword = localStorage.getItem('userPassword');
+    const registered = localStorage.getItem('isRegistered'); // Kiểm tra trạng thái đăng ký
+
+    // Kiểm tra email và password có khớp với dữ liệu lưu trữ không và đã đăng ký chưa
+    if (email === savedEmail && password === savedPassword && registered === 'true') {
+        alert('Login successful!');
+        logoutBtn.style.display = 'block';
+
+        // Thay đổi nội dung li trong header với tên người dùng
+        const savedName = localStorage.getItem('userName');
+        dangNhapLi.forEach((li, index) => {
+            if (index === 0) {
+                li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${savedName}`;
+            } else {
+                li.style.display = 'none';
+            }
+        });
+
+        // Đóng form và overlay
+        overlay2.style.display = 'none';
+        incluLsandsg.style.display = 'none';
+    } else {
+        alert('Incorrect email or password. Please try again.');
+    }
+});
+
+// Handle logout
+logoutBtn.addEventListener('click', function () {
+    // Không xóa userName, chỉ cần ẩn giao diện đăng nhập
+    // Chỉ reset giao diện mà không xóa dữ liệu Local Storage
+    dangNhapLi.forEach(li => {
+        li.style.display = 'block';
+        if (li.innerHTML.includes('fa-user-large')) {
+            li.innerHTML = `<i class="fa-solid fa-user-large"></i> Log in`;
+        }
+    });
+    // Ẩn nút Logout sau khi đăng xuất
+    logoutBtn.style.display = 'none';
+});
 // var users = JSON.parse(localStorage.getItem("users"));
 // console.log(users)
 const registerSubmit = document.getElementById('re_submit');
 registerSubmit.addEventListener("click", () => {
     var id = users.length + 1;
-    var name = document.getElementById('name_user').value ;
-    var email = document.getElementById('email_user').value ;
-    var password = document.getElementById('password_user').value ;
+    var name = document.getElementById('name_user').value;
+    var email = document.getElementById('email_user').value;
+    var password = document.getElementById('password_user').value;
     const newUser = {
         id: id,
         name: name,

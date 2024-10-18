@@ -46,7 +46,8 @@
             </a>
         </li>
         <li><a class="Dangnhap"><i class="fa-solid fa-user-large"></i> Log in</a></li>
-        <li><span style="color: white;">/</span></li>
+        <li><span style="color: white;" class="Dangnhap">/</span></li>
+        <li><a href="javascript:void(0)" class="Dangxuat">Logout</a></li>
         <li><a class="Dangnhap">Sign in</a></li>
     </nav>
 </header>
@@ -563,7 +564,7 @@
         <div class="form-container register-container">
             <form action="#">
                 <h1>Sign in</h1>
-                <input type="text" placeholder="Name" class="input-p">
+                <input type="text" placeholder="Name" class="input-p" id="nameInput">
                 <input type="email" placeholder="Email" class="input-p">
                 <input type="password" placeholder="Password" class="input-p">
                 <button id="re_submit">Sign in</button>
@@ -599,6 +600,7 @@
                 </div>
             </form>
         </div>
+
         <div class="overlay-container1">
             <div class="overlay2">
                 <div class="overlay2-panel overlay2-left">
