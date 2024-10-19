@@ -542,23 +542,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // PHẦN ĐĂNG KÝ ĐĂNG NHẬP
+// Khởi tạo thông tin admin
+const admin = [
+    {
+        email: 'admin@gmail.com',
+        password: '12345678'
+    }
+];
+localStorage.setItem('admin', JSON.stringify(admin));
+
+
 const registerButton = document.getElementById('register');
 const loginButton = document.getElementById('login');
 const container = document.getElementById('dior-lg');
-
 const dangnhapBtns = document.querySelectorAll('.Dangnhap');
 const overlay2 = document.getElementById('overlay');
 const incluLsandsg = document.querySelector('.inclu-lsandsg');
-const nameInput = document.getElementById('nameInput');
+const nameInput = document.getElementById('nameInput'); 
 const dangNhapLi = document.querySelectorAll('.Dangnhap'); 
 const logoutBtn = document.querySelector('.Dangxuat'); 
 const loginForm = document.querySelector('.login-container form'); 
-const loginEmailInput = document.querySelector('.login-container input[type="email"]'); 
+const loginEmailInput = document.querySelector('.login-container input[type="email"]');
 const loginPasswordInput = document.querySelector('.login-container input[type="password"]'); 
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const savedName = localStorage.getItem('userName');
-    const registered = localStorage.getItem('isRegistered'); 
+    const registered = localStorage.getItem('isRegistered');
 
     if (savedName && registered === 'true') {
         dangNhapLi.forEach((li, index) => {
@@ -571,11 +581,11 @@ document.addEventListener('DOMContentLoaded', function () {
       
         logoutBtn.style.display = 'block';
     } else {
-        
+       
         logoutBtn.style.display = 'none';
     }
 
-
+    
     const savedEmail = localStorage.getItem('userEmail');
     const savedPassword = localStorage.getItem('userPassword');
     if (savedEmail && savedPassword) {
@@ -594,6 +604,7 @@ loginButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
+
 dangnhapBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         overlay2.style.display = 'block';
@@ -611,34 +622,46 @@ overlay2.addEventListener('click', function () {
 const registerForm = document.querySelector('.register-container form');
 registerForm.addEventListener('submit', function (e) {
     e.preventDefault();
-
     const name = nameInput.value;
     const email = registerForm.querySelector('input[type="email"]').value;
     const password = registerForm.querySelector('input[type="password"]').value;
-
     if (!name || !email || !password) {
         alert('Please fill in all fields to sign in.');
         return;
     }
 
-    localStorage.setItem('userName', name);
-    localStorage.setItem('userEmail', email);
-    localStorage.setItem('userPassword', password);
-    localStorage.setItem('isRegistered', 'true'); 
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const existingUser = users.find(user => user.email === email);
+
+    if (existingUser) {
+        
+        alert('This email is already registered. Please use a different email.');
+        return; 
+    }
+    const newId = users.length ? users[users.length - 1].id + 1 : 1;
+
+    users.push({
+        id: newId,
+        name: name,
+        email: email,
+        password: password
+    });
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Registration Successful!');
 
     dangNhapLi.forEach((li, index) => {
         if (index === 0) {  
             li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${name}`;
         } else {
-            li.style.display = 'none'; 
+            li.style.display = 'none';  
         }
     });
+
 
     logoutBtn.style.display = 'block';
 
     overlay2.style.display = 'none';
     incluLsandsg.style.display = 'none';
-
     registerForm.reset();
 });
 
@@ -647,15 +670,21 @@ loginForm.addEventListener('submit', function (e) {
 
     const email = loginEmailInput.value;
     const password = loginPasswordInput.value;
+    const savedAdmin = JSON.parse(localStorage.getItem('admin'));
+    if (email === savedAdmin[0].email && password === savedAdmin[0].password) {
+        alert('Admin Login Successful!');
+        window.location.href = '../homeAdmin/homeAdmin.html'; 
+        return; 
+    }
 
+  
     const savedEmail = localStorage.getItem('userEmail');
     const savedPassword = localStorage.getItem('userPassword');
     const registered = localStorage.getItem('isRegistered'); 
 
     if (email === savedEmail && password === savedPassword && registered === 'true') {
-        alert('Login successful!');
+        alert('User Login Successful!');
         logoutBtn.style.display = 'block';
-
         const savedName = localStorage.getItem('userName');
         dangNhapLi.forEach((li, index) => {
             if (index === 0) {
@@ -681,19 +710,3 @@ logoutBtn.addEventListener('click', function () {
     });
     logoutBtn.style.display = 'none';
 });
-const registerSubmit = document.getElementById('re_submit');
-registerSubmit.addEventListener("click", () => {
-    var id = users.length + 1;
-    var name = document.getElementById('name_user').value;
-    var email = document.getElementById('email_user').value;
-    var password = document.getElementById('password_user').value;
-    const newUser = {
-        id: id,
-        name: name,
-        email: email,
-        password: password
-    };
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-    location.reload()
-})
