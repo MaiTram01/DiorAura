@@ -667,7 +667,6 @@ registerForm.addEventListener('submit', function (e) {
 
 loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
-
     const email = loginEmailInput.value;
     const password = loginPasswordInput.value;
     const savedAdmin = JSON.parse(localStorage.getItem('admin'));
@@ -677,15 +676,15 @@ loginForm.addEventListener('submit', function (e) {
         return; 
     }
 
-  
-    const savedEmail = localStorage.getItem('userEmail');
-    const savedPassword = localStorage.getItem('userPassword');
-    const registered = localStorage.getItem('isRegistered'); 
+    const users = JSON.parse(localStorage.getItem('users')) || []; 
 
-    if (email === savedEmail && password === savedPassword && registered === 'true') {
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (user) {
         alert('User Login Successful!');
         logoutBtn.style.display = 'block';
-        const savedName = localStorage.getItem('userName');
+
+        const savedName = user.name;
         dangNhapLi.forEach((li, index) => {
             if (index === 0) {
                 li.innerHTML = `<i class="fa-solid fa-user-large"></i> ${savedName}`;
@@ -700,6 +699,7 @@ loginForm.addEventListener('submit', function (e) {
         alert('Incorrect email or password. Please try again.');
     }
 });
+
 
 logoutBtn.addEventListener('click', function () {
     dangNhapLi.forEach(li => {
