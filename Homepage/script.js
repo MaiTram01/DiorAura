@@ -2,11 +2,11 @@
 function renderProducts(cardList, elementId) {
     let div = cardList.map(p =>
         `<div class='course-item'>
-            <img src='${p.image}' alt='${p.name}'/>
+            <img src='${p.image}' alt='${p.name}' onclick="window.location.href='../Detail_Product/Detail.html?id=${p.id}'"/>
             <h3>${p.name}</h3>
             <p>${p.content}</p>
             <h5 class="price">From: <span class="price-value">${p.price}</span></h5>
-            <a href="#" class="more-info">></a>
+            <a href="../Detail_Product/Detail.html?id=${p.id}" class="more-info">></a>
         </div>`
     ).join("");
     document.getElementById(elementId).innerHTML = div;
@@ -20,43 +20,43 @@ let cardList1 = [
 
 // Danh sách sản phẩm 2
 let cardList2 = [
-    { id: 1, image: "./Image/sp4.jpg", name: "SAUVAGE", content: "Eau de Parfum", price: "$145.00" },
-    { id: 2, image: "./Image/sp5.jpg", name: "SAUVAGE", content: "Elixir", price: "$230.00" },
-    { id: 3, image: "./Image/sp6.jpg", name: "SAUVAGE", content: "Eau de toilette ", price: "$107.00" }
+    { id: 4, image: "./Image/sp4.jpg", name: "SAUVAGE", content: "Eau de Parfum", price: "$145.00" },
+    { id: 5, image: "./Image/sp5.jpg", name: "SAUVAGE", content: "Elixir", price: "$230.00" },
+    { id: 6, image: "./Image/sp6.jpg", name: "SAUVAGE", content: "Eau de toilette ", price: "$107.00" }
 ];
 
 // Danh sách sản phẩm 3
 let cardList3 = [
-    { id: 1, image: "./Image/sp7.jpg", name: "ROUGE DIOR FOREVER LIPSTICK", content: "Transfer-proof lipstick pigmented matte-bare-lip feel comfort", price: "$66.00" },
-    { id: 2, image: "./Image/sp8.jpg", name: "ROUGE DIOR FOREVER LIQUID", content: "Transfer-proof*liquid lipstick - ultra- pigmented matte- weightless", price: "$64.00" },
-    { id: 3, image: "./Image/sp9.jpg", name: "DIOR FOREVER SKIN GLOW", content: "Clean Radiant Foundation - 24 Wear and Hydration", price: "$99.00" }
+    { id: 7, image: "./Image/sp7.jpg", name: "ROUGE DIOR FOREVER LIPSTICK", content: "Transfer-proof lipstick pigmented matte-bare-lip feel comfort", price: "$66.00" },
+    { id: 8, image: "./Image/sp8.jpg", name: "ROUGE DIOR FOREVER LIQUID", content: "Transfer-proof*liquid lipstick - ultra- pigmented matte- weightless", price: "$64.00" },
+    { id: 9, image: "./Image/sp9.jpg", name: "DIOR FOREVER SKIN GLOW", content: "Clean Radiant Foundation - 24 Wear and Hydration", price: "$99.00" }
 ];
 
 // Danh sách sản phẩm 4
 let cardList4 = [
-    { id: 1, image: "./Image/sp10.jpg", name: "DIOR PRESTIGE LE BAUME DE MINUIT", content: "Intensive Revitalizing Night Cream", price: "From $895.00" },
-    { id: 2, image: "./Image/sp11.jpg", name: "DIOR PRESTIGE", content: "La Micro-Huile de Rose Advanced Serum", price: "From $238.00" },
-    { id: 3, image: "./Image/sp12.jpg", name: "DIOR PRESTIGE LA CRÈME", content: "Anti-Aging Intensive Repairing Cream", price: "From $569.00" },
+    { id: 10, image: "./Image/sp10.jpg", name: "DIOR PRESTIGE LE BAUME DE MINUIT", content: "Intensive Revitalizing Night Cream", price: "From $895.00" },
+    { id: 11, image: "./Image/sp11.jpg", name: "DIOR PRESTIGE", content: "La Micro-Huile de Rose Advanced Serum", price: "From $238.00" },
+    { id: 12, image: "./Image/sp12.jpg", name: "DIOR PRESTIGE LA CRÈME", content: "Anti-Aging Intensive Repairing Cream", price: "From $569.00" },
 ];
 
 // Render sản phẩm
 let cardList5 = [
-    { id: 1, image: "./Image/sp13.jpg", name: "GRIS DIOR", content: "Unisex eau de parfum - chypre notes", price: "From $235.00" },
-    { id: 2, image: "./Image/sp14.jpg", name: "DIORIVIER", content: "Eau de Parfum - Fig and Rose Notes", price: "From $235.00" },
-    { id: 3, image: "./Image/sp15.jpg", name: "OUD ISPAHAN", content: "Oriental Fragrance", price: "From $235.00" },
+    { id: 13, image: "./Image/sp13.jpg", name: "GRIS DIOR", content: "Unisex eau de parfum - chypre notes", price: "From $235.00" },
+    { id: 14, image: "./Image/sp14.jpg", name: "DIORIVIER", content: "Eau de Parfum - Fig and Rose Notes", price: "From $235.00" },
+    { id: 15, image: "./Image/sp15.jpg", name: "OUD ISPAHAN", content: "Oriental Fragrance", price: "From $235.00" },
 ];
 
 // sản phẩm 6
 let cardList6 = [
-    { id: 1, image: "./Image/sp16.jpg", name: "MISS DIOR BLOOMING BOUQUET", content: "Collector's Bottle", price: "From $1,240.00" },
-    { id: 2, image: "./Image/sp17.jpg", name: "LES ADORABLES SET", content: "Shimmering Scurb, Body Cream and Shimmering Gel", price: "From $437.00" },
-    { id: 3, image: "./Image/sp18.jpg", name: "MISS DIOR ROSE N'ROSES", content: "Eau de toilette", price: "From $156.00" },
+    { id: 16, image: "./Image/sp16.jpg", name: "MISS DIOR BLOOMING BOUQUET", content: "Collector's Bottle", price: "From $1,240.00" },
+    { id: 17, image: "./Image/sp17.jpg", name: "LES ADORABLES SET", content: "Shimmering Scurb, Body Cream and Shimmering Gel", price: "From $437.00" },
+    { id: 18, image: "./Image/sp18.jpg", name: "MISS DIOR ROSE N'ROSES", content: "Eau de toilette", price: "From $156.00" },
 ]
 //sản phẩm 7
 let cardList7 = [
-    { id: 1, image: "./Image/sp19.jpg", name: "COMPLIMENTARY SHIPPING", content: "For orders over $90.00", price: "From $1,500.00" },
-    { id: 2, image: "./Image/sp20.jpg", name: "PERSONALISED GIFT CARD", content: "MESSAGE", price: "From $1,120.000" },
-    { id: 3, image: "./Image/sp21.jpg", name: "RECEIVE 2 COMPLIMENTARY SAMPLES", content: "On all orders", price: "From $240.00" },
+    { id: 19, image: "./Image/sp19.jpg", name: "COMPLIMENTARY SHIPPING", content: "For orders over $90.00", price: "From $1,500.00" },
+    { id: 20, image: "./Image/sp20.jpg", name: "PERSONALISED GIFT CARD", content: "MESSAGE", price: "From $1,120.000" },
+    { id: 21, image: "./Image/sp21.jpg", name: "RECEIVE 2 COMPLIMENTARY SAMPLES", content: "On all orders", price: "From $240.00" },
 ];
 
 
@@ -483,18 +483,7 @@ document.getElementById('select-all').addEventListener('change', function (e) {
     renderCart();
 });
 renderCart();
-function renderProducts(cardList, elementId) {
-    let div = cardList.map(p =>
-        `<div class='course-item'>
-    <img src='${p.image}' alt='${p.name}'/>
-    <h3>${p.name}</h3>
-    <p>${p.content}</p>
-    <h5 class="price-basket">From: <span class="price-value">${p.price}</span></h5>
-    <a href="#" class="more-info">></a>
-</div>`
-    ).join("");
-    document.getElementById(elementId).innerHTML = div;
-}
+
 function search() {
     const query = document.getElementById('header-input').value;
     console.log('Searching for:', query);
