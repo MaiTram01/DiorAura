@@ -23,7 +23,8 @@
         <nav class="header-right">
             <div class="input-container">
                 <input type="text" id="header-input" class="header-input" placeholder="Search on dior.com">
-                <button class="button-search" onclick="search()">
+                <ul id="results"></ul> <!-- cái này để hiển thị mấy cái gợi ý  -->
+                <button class="button-search" onclick="searchProduct()"> <!-- Gán sự kiện cho tìm kiếm -->
                     <i style="color:rgb(176, 168, 168);" class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>

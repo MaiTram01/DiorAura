@@ -25,15 +25,12 @@ function quantityUser(){
     document.getElementById('diplayNumber').innerHTML = "The current number of users is: "+ quantity;
 }
 quantityUser();
-
+var user = JSON.parse(localStorage.getItem("users")) || [];  // Lấy danh sách người dùng
 // Hiển thị danh sách người dùng trong bảng
-function showUsers() {
-    var users = JSON.parse(localStorage.getItem("users")) || [];  // Lấy danh sách người dùng
-
-    if (users.length > 0) {
+function showUsers(arr) { /* Thêm tham số truyền vào để có thể tận dụng code */
+    if (arr.length > 0) {
         var tableContent = '';  
-
-        users.forEach(user => {
+        arr.forEach(user => {
             var row = "<tr style='border-bottom: 1px solid black;height:50px; background-color: #faeef0;'>";
             row += "<td style='padding-left: 90px;'>" + user.id + "</td>";
             row += "<td style='padding-left: 50px;'>" + user.name + "</td>";
@@ -50,7 +47,7 @@ function showUsers() {
         console.log("No users found in localStorage.");
     }
 }
-showUsers();
+showUsers(user); /* Hiển thị tất cả user ra màn hình  */
 
 // Hàm để xử lý đăng ký (từ trang Sign in)
 function registerNewUser(name, email, password) {
@@ -66,7 +63,7 @@ function registerNewUser(name, email, password) {
     localStorage.setItem('users', JSON.stringify(users));
 
     // Cập nhật lại bảng Users Management sau khi thêm người dùng mới
-    showUsers();
+    showUsers(users);
     quantityUser();  // Cập nhật lại số lượng người dùng
 }
 
@@ -100,4 +97,43 @@ function openConfirmation(){
 }
 function openChart(){
     window.location.href = '../Chart/chart.html';
+}
+// Phan tim kiem
+
+const searchInput = document.getElementById('header-input');
+const results = document.getElementById('results');
+    
+document.addEventListener('click', function(event) {
+
+    if (!results.contains(event.target) && event.target.id !== 'header-input') {
+        results.style.display = 'none';
+    }
+});
+searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    results.innerHTML = ''; // Xóa kết quả trước đó
+    results.style.display = 'block';
+    const emails = user.filter(item => item.email.toLowerCase().includes(query));
+    console.log(emails)
+    emails.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        li.textContent = item.email;
+        li.addEventListener('click', function() {
+            searchInput.value = item.email; 
+            results.innerHTML = ''; // Xóa kết quả sau khi chọn
+        });
+        results.appendChild(li);
+    });
+});
+function searchUser(){
+    var dataInput  = document.getElementById('header-input').value;
+    var result = user.filter(function(item){
+        return item.name == dataInput || item.email == dataInput;
+    });
+    if(!result){
+        alert("Not found");
+    }else{
+        showUsers(result);;
+    }
 }

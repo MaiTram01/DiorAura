@@ -232,7 +232,66 @@ function openConfirmation(){
 function openChart(){
     window.location.href = '../Chart/chart.html';
 }
+// Phan tim kiem
+var product = JSON.parse(localStorage.getItem("products"));
+const searchInput = document.getElementById('header-input');
+const results = document.getElementById('results');
+        // Thêm sự kiện click cho toàn bộ document
+document.addEventListener('click', function(event) {
+        // Kiểm tra nếu click không nằm trong ul và ô input
+    if (!results.contains(event.target) && event.target.id !== 'header-input') {
+        results.style.display = 'none';
+    }
+});
+searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    results.innerHTML = ''; // Xóa kết quả trước đó
+    results.style.display = 'block';
+    const filteredData = product.filter(item => item.name.toLowerCase().includes(query));
+    console.log(filteredData)
+    filteredData.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        li.addEventListener('click', function() {
+            searchInput.value = item.name; // Đặt giá trị ô input thành tên sản phẩm
+            results.innerHTML = ''; // Xóa kết quả sau khi chọn
+        });
+        results.appendChild(li);
+    });
+});
+function searchProduct(){
+    var dataInput  = document.getElementById('header-input').value;
+    var result = product.filter(function(item){
+        return item.name == dataInput;
+    });
+    
+    if(!result){
+        alert("Not found");
+    }else{
+        showFind(result);
+    }
+}
+function showFind(arr) {
+    if (arr && arr.length > 0) {
+        var tableContent = '';  
 
+        for (var i of arr) {
+            var row = "<tr  style = 'border-bottom: 1px solid black; background-color: #faeef0;'>";
+            row += "<td style='padding-left: 90px;font-family: 'Kaisei Tokumin';'>" + i.id + "</td>";
+            row += "<td style='padding-left: 50px;font-family: 'Kaisei Tokumin';'>" + i.name + "</td>";
+            row += "<td style='padding-left: 60px;font-family: 'Kaisei Tokumin';'><img src='" + i.image + "' alt='Product Image' width='100' height='100;'></td>";
+            row += "<td style='padding-left: 90px;'> $" + i.price + "</td>";
+            row += "<td style='padding-left: 70px; font-family: Kaisei Tokumin; '>" +
+            "<button id = 'btn-edit' class='btn btn-success' onclick='updateData(\"" + i.id + "\")'>Edit</button> " +
+            "<button style='font-family: Kaisei Tokumin;' id = 'btn-delete' class='btn btn-danger' onclick='openFormRemove(\"" + i.id + "\")'>Delete</button></td>";
+            row += "</tr>";
+            tableContent += row; 
+        }
+        document.getElementById('content_table').innerHTML = tableContent;
+    } else {
+        console.log("No products found in localStorage.");
+    }
+}
 
 
 
