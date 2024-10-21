@@ -741,3 +741,24 @@ function handleChatbox() {
     }
 }
 chatBubble.addEventListener('click', handleChatbox);
+// PHẦN TÌM KIẾM.
+const results = document.getElementById('results');
+var products = JSON.parse(localStorage.getItem("products"));
+console.log(products);
+function searchProduct() {
+    var dataInput = document.getElementById('header-input').value;
+    var result = products.filter(function(item) {
+        return item.name.toLowerCase() === dataInput.toLowerCase();
+    });
+    var typeResult = result[0].type;
+    var result = products.filter(function(item){
+        return item.type == typeResult;
+    });
+    if (result.length === 0) {
+        alert("Not found");
+    } else {
+        localStorage.setItem('searchResults', JSON.stringify(result));
+        window.location.href = "search-result.html";
+    }
+}
+
