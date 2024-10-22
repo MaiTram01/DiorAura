@@ -732,22 +732,56 @@ function handleChatbox() {
 chatBubble.addEventListener('click', handleChatbox);
 // PHẦN TÌM KIẾM.
 const results = document.getElementById('results');
-var products = JSON.parse(localStorage.getItem("products"));
+var products  = JSON.parse(localStorage.getItem("cardList")) || [];
+const inputSearch = document.getElementById('header-input');
 console.log(products);
+
+        // Thêm sự kiện click cho toàn bộ document
+document.addEventListener('click', function(event) {
+        // Kiểm tra nếu click không nằm trong ul và ô input
+    if (!results.contains(event.target) && event.target.id !== 'header-input') {
+        results.style.display = 'none';
+        document.getElementById('search').style.zIndex = "1001";
+    }
+});
+inputSearch.addEventListener('keydown', function(event) {
+    document.getElementById('search').style.zIndex = "999";
+});
+inputSearch.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    results.innerHTML = ''; // Xóa kết quả trước đó
+    results.style.display = 'block';
+    const filteredData = products.filter(item => item.name.toLowerCase().includes(query));
+    console.log("ss",filteredData)
+    filteredData.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.name;
+        li.addEventListener('click', function() {
+            inputSearch.value = item.name; // Đặt giá trị ô input thành tên sản phẩm
+            results.innerHTML = ''; // Xóa kết quả sau khi chọn
+        });
+        results.appendChild(li);
+    });
+});
 function searchProduct() {
     var dataInput = document.getElementById('header-input').value;
     var result = products.filter(function(item) {
         return item.name.toLowerCase() === dataInput.toLowerCase();
     });
-    var typeResult = result[0].type;
-    var result = products.filter(function(item){
-        return item.type == typeResult;
-    });
-    if (result.length === 0) {
+    if(result.length == 0){
         alert("Not found");
-    } else {
-        localStorage.setItem('searchResults', JSON.stringify(result));
-        window.location.href = "search-result.html";
+        return;
+    }else{
+        var typeResult = result[0].category;
     }
+    var mainResult = products.filter(function(item){
+        return item.category == typeResult ;
+    });
+    mainResult[0]= result[0];
+    console.log("Main",mainResult);
+    if (mainResult.length > 0) {
+        localStorage.setItem('searchResults', JSON.stringify(mainResult));
+        window.location.href = "../Search_Display/index.html";
+    };
 }
 
