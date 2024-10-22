@@ -23,6 +23,7 @@
     <nav class="header-right">
         <div class="input-container">
             <input type="text" id="header-input" class="header-input" placeholder="Search on dior.com">
+            <ul id="results"></ul> <!-- cái này để hiển thị mấy cái gợi ý  -->
             <button class="button-search" onclick="searchProduct()"> <!-- Gán hàm tìm kiếm sp -->
                 <i style="color:rgb(176, 168, 168);" class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -545,7 +546,7 @@
 </div>
 <!-- PHẦN BACKGROUND CHO GIỎ HÀNG -->
   <!-- PHẦN HOT SEARCH -->
-  <div class="Search" id="search" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 200px; z-index: 1001; background-color: white;">
+<div class="Search" id="search" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 200px; z-index: 1001; background-color: white;">
     <div class="hot-search" id="hot-search">
         <a href="#"><img src="./Image/fire - Copy.jpg" alt="Mô tả ảnh" /></a>
         <a href="#"><h2>Hot search</h2></a>

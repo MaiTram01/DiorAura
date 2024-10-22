@@ -12,7 +12,7 @@ const products = [
     }
 ];
 
-console.log(products)
+
 if (!localStorage.getItem("products")) {
     localStorage.setItem("products", JSON.stringify(products));
 }
@@ -221,8 +221,8 @@ function createUpdate(){
     
 }
 
-var productss = JSON.parse(localStorage.getItem("products"));
-console.log("Store: ", productss)
+// var productss = JSON.parse(localStorage.getItem("products"));
+// console.log("Store: ", productss)
 function openUser(){
     window.location.href = '../User_managerment/adminUser.html';
 }
