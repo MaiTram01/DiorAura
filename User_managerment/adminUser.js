@@ -32,11 +32,11 @@ function showUsers(arr) { /* Thêm tham số truyền vào để có thể tận
         var tableContent = '';  
         arr.forEach(user => {
             var row = "<tr style='border-bottom: 1px solid black;height:50px; background-color: #faeef0;'>";
-            row += "<td style='padding-left: 90px;'>" + user.id + "</td>";
-            row += "<td style='padding-left: 50px;'>" + user.name + "</td>";
-            row += "<td style='padding-left: 50px;'>" + user.email + "</td>";
-            row += "<td style='padding-left: 90px;'>" + user.password + "</td>";
-            row += "<td style='padding-left: 70px;'>" +
+            row += "<td style='padding-left: 122px;'>" + user.id + "</td>";
+            row += "<td style='padding-left: 96px;'>" + user.name + "</td>";
+            row += "<td style='padding-left: 96px;'>" + user.email + "</td>";
+            row += "<td style='padding-left: 113px;'>" + user.password + "</td>";
+            row += "<td style='padding-left: 119px;'>" +
                 "<button class='btn btn-danger' id='btn-delete' onclick='openFormRemove(\"" + user.id + "\")'>Delete</button></td>";
             row += "</tr>";
             tableContent += row; 
