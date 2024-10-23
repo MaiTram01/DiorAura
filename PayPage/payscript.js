@@ -249,3 +249,6 @@ function hideNotification() {
     var notificationBox = document.getElementById("notificationBox");
     notificationBox.style.display = "none";
 }
+function Order(){
+    alert("You have placed your order successfully")
+}
