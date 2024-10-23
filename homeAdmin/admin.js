@@ -96,11 +96,11 @@ function showProducts() {
 
         for (var i of products) {
             var row = "<tr  style = 'border-bottom: 1px solid black; background-color: #faeef0;'>";
-            row += "<td style='padding-left: 90px;font-family: 'Kaisei Tokumin';'>" + i.id + "</td>";
-            row += "<td style='padding-left: 50px;font-family: 'Kaisei Tokumin';'>" + i.name + "</td>";
-            row += "<td style='padding-left: 60px;font-family: 'Kaisei Tokumin';'><img src='" + i.image + "' alt='Product Image' width='100' height='100;'></td>";
-            row += "<td style='padding-left: 90px;'> $" + i.price + "</td>";
-            row += "<td style='padding-left: 70px; font-family: Kaisei Tokumin; '>" +
+            row += "<td style='padding-left: 124px;font-family: 'Kaisei Tokumin';'>" + i.id + "</td>";
+            row += "<td style='padding-left: 104px;font-family: 'Kaisei Tokumin';'>" + i.name + "</td>";
+            row += "<td style='padding-left: 96px;font-family: 'Kaisei Tokumin';'><img src='" + i.image + "' alt='Product Image' width='100' height='100;'></td>";
+            row += "<td style='padding-left: 120px;'> $" + i.price + "</td>";
+            row += "<td style='padding-left: 92px; font-family: Kaisei Tokumin; '>" +
             "<button id = 'btn-edit' class='btn btn-success' onclick='updateData(\"" + i.id + "\")'>Edit</button> " +
             "<button style='font-family: Kaisei Tokumin;' id = 'btn-delete' class='btn btn-danger' onclick='openFormRemove(\"" + i.id + "\")'>Delete</button></td>";
             row += "</tr>";

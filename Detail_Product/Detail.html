@@ -521,7 +521,7 @@
 
             <div class="button-add-product-detail">
                 <input type="number" id="product-quantity" value="1" min="1" class="qty-product-detail">
-                <button class="btn">Add to Cart</button>
+                <button class="btn" onclick="Addcart()">Add to Cart</button>
             </div>
 
             <a href="#" class="text-muted">DELIVERY & RETURNS</a>
@@ -661,6 +661,9 @@
         function changeImage(src) {
             document.getElementById('mainImage').src = src;
         }
+         function Addcart(){
+            alert('You have successfully added 3 products to your cart.')
+         }
     </script>
 </body>
 

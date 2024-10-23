@@ -4,9 +4,9 @@
       "description": "Unisex Eau de Parfum - Chypre Notes",
       "price": "$120.00",
       "sizeOptions": [
-        {"size": "Size S", "price": "$120.00"},
-        {"size": "Size M", "price": "$230.00"},
-        {"size": "Size L", "price": "$480.00"}
+        {"size": "Size S", "price": "100ml"},
+        {"size": "Size M", "price": "200ml"},
+        {"size": "Size L", "price": "300ml"}
       ],
       "quantity": 1,
       "images": [
